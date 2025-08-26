@@ -1,0 +1,157 @@
+{
+  "title": "AZ-104 Storage and Data Management Questions",
+  "description": "Focused question bank for Azure Storage and Data Management topics",
+  "questions": [
+    {
+      "question": "You need to configure Azure Blob Storage to automatically move blobs to the Cool tier after 30 days and to the Archive tier after 90 days. What should you configure?",
+      "correct_answer": "Lifecycle management policy",
+      "wrong_answers": [
+        "Access tier policy",
+        "Retention policy",
+        "Backup policy",
+        "Replication policy"
+      ],
+      "explanation": "Lifecycle management policies allow you to automatically transition blobs between access tiers based on rules you define, optimizing storage costs.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/storage/blobs/lifecycle-management-overview",
+        "AZ-104 Storage Management"
+      ],
+      "category": "Storage"
+    },
+    {
+      "question": "Which Azure Storage service should you use to share files across multiple virtual machines using the SMB protocol?",
+      "correct_answer": "Azure Files",
+      "wrong_answers": [
+        "Azure Blob Storage",
+        "Azure Disk Storage",
+        "Azure Table Storage",
+        "Azure Queue Storage"
+      ],
+      "explanation": "Azure Files provides fully managed file shares in the cloud accessible via SMB and NFS protocols, perfect for sharing files across multiple VMs.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction"
+      ],
+      "category": "Storage"
+    },
+    {
+      "question": "What is the maximum size of a single blob in Azure Blob Storage?",
+      "correct_answer": "190.7 TB",
+      "wrong_answers": [
+        "500 GB",
+        "1 TB",
+        "5 TB",
+        "100 TB"
+      ],
+      "explanation": "Azure Blob Storage supports blobs up to 190.7 TB in size for block blobs, making it suitable for very large files and datasets.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/storage/blobs/scalability-targets"
+      ],
+      "category": "Storage"
+    },
+    {
+      "question": "You need to ensure that deleted blobs are recoverable for 30 days. What should you enable?",
+      "correct_answer": "Soft delete for blobs",
+      "wrong_answers": [
+        "Blob versioning",
+        "Point-in-time restore",
+        "Change feed",
+        "Static website hosting"
+      ],
+      "explanation": "Soft delete for blobs protects your data from being accidentally or erroneously modified or deleted, allowing recovery within the retention period.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/storage/blobs/soft-delete-blob-overview"
+      ],
+      "category": "Storage"
+    },
+    {
+      "question": "Which tool should you use to transfer large amounts of data to Azure when network bandwidth is limited?",
+      "correct_answer": "Azure Data Box",
+      "wrong_answers": [
+        "AzCopy",
+        "Azure Storage Explorer",
+        "Azure Data Factory",
+        "Azure Import/Export service"
+      ],
+      "explanation": "Azure Data Box is a physical device that allows you to transfer large amounts of data to Azure when network transfer is not practical due to time or cost constraints.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/databox/data-box-overview"
+      ],
+      "category": "Storage"
+    },
+    {
+      "question": "What is the purpose of Azure Storage access keys?",
+      "correct_answer": "Provide full access to all storage services and data in the storage account",
+      "wrong_answers": [
+        "Encrypt data at rest",
+        "Enable geo-replication",
+        "Configure access tiers",
+        "Set up lifecycle policies"
+      ],
+      "explanation": "Storage access keys provide full access to all storage services and data in a storage account. They should be protected and rotated regularly.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage"
+      ],
+      "category": "Storage"
+    },
+    {
+      "question": "Which Azure service provides a NoSQL database for storing and querying large amounts of structured data?",
+      "correct_answer": "Azure Table Storage",
+      "wrong_answers": [
+        "Azure SQL Database",
+        "Azure Cosmos DB",
+        "Azure Database for MySQL",
+        "Azure Cache for Redis"
+      ],
+      "explanation": "Azure Table Storage is a NoSQL key-value store for rapid development using massive semi-structured datasets. It's part of Azure Storage services.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/storage/tables/table-storage-overview"
+      ],
+      "category": "Storage"
+    },
+    {
+      "question": "You need to encrypt data in transit to Azure Storage. Which protocol should you use?",
+      "correct_answer": "HTTPS/TLS",
+      "wrong_answers": [
+        "HTTP",
+        "FTP",
+        "SSH",
+        "Telnet"
+      ],
+      "explanation": "HTTPS/TLS encrypts data in transit to Azure Storage. Azure Storage requires HTTPS for secure transfers and can be configured to refuse HTTP requests.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer"
+      ],
+      "category": "Storage"
+    },
+    {
+      "question": "What is the difference between Standard and Premium storage performance tiers?",
+      "correct_answer": "Premium storage uses SSDs for higher IOPS and lower latency",
+      "wrong_answers": [
+        "Premium storage provides more storage capacity",
+        "Premium storage includes automatic backup",
+        "Premium storage supports more replication options",
+        "Premium storage allows public access"
+      ],
+      "explanation": "Premium storage uses solid-state drives (SSDs) to provide high-performance, low-latency disk support for VMs running I/O-intensive workloads.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/virtual-machines/premium-storage-performance"
+      ],
+      "category": "Storage"
+    },
+    {
+      "question": "Which Azure Storage redundancy option replicates data across availability zones?",
+      "correct_answer": "Zone-redundant storage (ZRS)",
+      "wrong_answers": [
+        "Locally redundant storage (LRS)",
+        "Geo-redundant storage (GRS)",
+        "Read-access geo-redundant storage (RA-GRS)",
+        "Premium storage"
+      ],
+      "explanation": "Zone-redundant storage (ZRS) replicates data synchronously across three Azure availability zones in the primary region, providing protection against zone failures.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy"
+      ],
+      "category": "Storage"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "title": "AZ-104 Virtual Machines and Compute Questions",
+  "description": "Focused question bank for Azure Virtual Machines and Compute services",
+  "questions": [
+    {
+      "question": "You need to ensure that a virtual machine can be accessed from the internet. What must you configure?",
+      "correct_answer": "Public IP address and Network Security Group rules",
+      "wrong_answers": [
+        "Only a public IP address",
+        "Only Network Security Group rules",
+        "Only a load balancer",
+        "Only an application gateway"
+      ],
+      "explanation": "To access a VM from the internet, you need both a public IP address assigned to the VM or load balancer and appropriate NSG rules to allow the traffic.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal"
+      ],
+      "category": "Virtual Machines"
+    },
+    {
+      "question": "What is the maximum number of data disks that can be attached to a Standard_DS1_v2 virtual machine?",
+      "correct_answer": "2",
+      "wrong_answers": [
+        "1",
+        "4",
+        "8",
+        "16"
+      ],
+      "explanation": "The Standard_DS1_v2 VM size supports a maximum of 2 data disks. Different VM sizes have different limits for data disks.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general"
+      ],
+      "category": "Virtual Machines"
+    },
+    {
+      "question": "Which Azure service should you use to automatically patch virtual machines?",
+      "correct_answer": "Azure Automation Update Management",
+      "wrong_answers": [
+        "Azure Security Center",
+        "Azure Monitor",
+        "Azure Backup",
+        "Azure Site Recovery"
+      ],
+      "explanation": "Azure Automation Update Management helps you manage operating system updates for Windows and Linux machines in Azure, on-premises, and other cloud environments.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/automation/update-management/overview"
+      ],
+      "category": "Virtual Machines"
+    },
+    {
+      "question": "What happens to the temporary disk when a virtual machine is stopped (deallocated)?",
+      "correct_answer": "Data on the temporary disk is lost",
+      "wrong_answers": [
+        "Data is preserved",
+        "Data is moved to the OS disk",
+        "Data is backed up automatically",
+        "Data is moved to persistent storage"
+      ],
+      "explanation": "The temporary disk provides short-term storage and data is lost when the VM is stopped (deallocated). It should not be used for important data.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview"
+      ],
+      "category": "Virtual Machines"
+    },
+    {
+      "question": "Which VM size series is optimized for compute-intensive workloads?",
+      "correct_answer": "F-series",
+      "wrong_answers": [
+        "A-series",
+        "B-series",
+        "D-series",
+        "E-series"
+      ],
+      "explanation": "F-series VMs are optimized for compute-intensive workloads and feature a high CPU-to-memory ratio with Intel Xeon processors.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-compute"
+      ],
+      "category": "Virtual Machines"
+    },
+    {
+      "question": "What is the purpose of Azure VM extensions?",
+      "correct_answer": "Provide post-deployment configuration and automation",
+      "wrong_answers": [
+        "Increase VM performance",
+        "Add additional storage",
+        "Enable remote access",
+        "Configure networking"
+      ],
+      "explanation": "VM extensions are small applications that provide post-deployment configuration and automation tasks on Azure VMs, such as software installation and configuration.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/overview"
+      ],
+      "category": "Virtual Machines"
+    },
+    {
+      "question": "Which feature should you use to ensure VMs in an availability set are updated during different maintenance windows?",
+      "correct_answer": "Update domains",
+      "wrong_answers": [
+        "Fault domains",
+        "Availability zones",
+        "Scale sets",
+        "Load balancers"
+      ],
+      "explanation": "Update domains ensure that VMs in an availability set are rebooted at different times during planned maintenance, maintaining availability.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview"
+      ],
+      "category": "Virtual Machines"
+    },
+    {
+      "question": "What is the difference between Standard and Basic load balancer SKUs?",
+      "correct_answer": "Standard supports availability zones and has higher SLA",
+      "wrong_answers": [
+        "Standard supports fewer backend instances",
+        "Basic has better performance",
+        "Basic supports availability zones",
+        "Standard is less expensive"
+      ],
+      "explanation": "Standard Load Balancer supports availability zones, has a 99.99% SLA, and provides advanced features compared to the Basic SKU.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/load-balancer/skus"
+      ],
+      "category": "Virtual Machines"
+    },
+    {
+      "question": "Which tool should you use to capture a generalized image of a virtual machine?",
+      "correct_answer": "Azure CLI or PowerShell with Sysprep",
+      "wrong_answers": [
+        "Azure Backup",
+        "Azure Site Recovery",
+        "VM snapshots only",
+        "Azure Monitor"
+      ],
+      "explanation": "To create a generalized VM image, you must first run Sysprep (Windows) or waagent (Linux) to generalize the VM, then capture it using Azure CLI or PowerShell.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/virtual-machines/capture-image-resource"
+      ],
+      "category": "Virtual Machines"
+    },
+    {
+      "question": "What is the purpose of proximity placement groups?",
+      "correct_answer": "Place VMs physically close together for low latency",
+      "wrong_answers": [
+        "Provide high availability across regions",
+        "Enable automatic scaling",
+        "Reduce storage costs",
+        "Simplify network configuration"
+      ],
+      "explanation": "Proximity placement groups ensure that Azure compute resources are physically located close to each other to minimize latency between VMs.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/virtual-machines/co-location"
+      ],
+      "category": "Virtual Machines"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "title": "AZ-104 Monitoring and Backup Advanced Questions",
+  "description": "Advanced questions covering Azure Monitor, Log Analytics, alerts, backup, and Site Recovery - 10-15% of exam",
+  "questions": [
+    {
+      "question": "You need to create an alert that triggers when the average CPU utilization of VMs in a resource group exceeds 85% for more than 10 minutes. The alert should send notifications to multiple teams. What should you configure?",
+      "correct_answer": "Metric alert rule with aggregation settings and action groups for notifications",
+      "wrong_answers": [
+        "Log Analytics query alert with CPU performance counters",
+        "Activity log alert for VM performance events",
+        "Application Insights availability tests",
+        "Azure Advisor recommendations for performance"
+      ],
+      "explanation": "Metric alert rules can monitor CPU utilization across multiple VMs with specified aggregation periods and thresholds, using action groups to notify multiple teams via different communication channels.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-metric",
+        "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/action-groups"
+      ],
+      "category": "Monitoring and Backup"
+    },
+    {
+      "question": "You have deployed Azure Backup for multiple VMs across different resource groups. You need to monitor backup job success rates and receive alerts for failed backups. What should you configure?",
+      "correct_answer": "Backup Reports in Recovery Services vault with alert rules for backup failures",
+      "wrong_answers": [
+        "Azure Monitor metrics for storage account usage",
+        "Log Analytics workspace with custom backup queries",
+        "Azure Security Center backup recommendations",
+        "Application Insights for backup application monitoring"
+      ],
+      "explanation": "Backup Reports provide comprehensive monitoring of backup jobs across all protected items, with built-in alert capabilities for backup failures and success rate tracking.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/backup/configure-reports",
+        "https://learn.microsoft.com/en-us/azure/backup/backup-azure-monitoring-built-in-monitor"
+      ],
+      "category": "Monitoring and Backup"
+    },
+    {
+      "question": "You need to query Azure Activity Log to find all resource deletion operations performed by a specific user in the last 30 days. Which KQL query approach should you use?",
+      "correct_answer": "AzureActivity | where TimeGenerated > ago(30d) and OperationName contains 'Delete' and Caller == 'user@domain.com'",
+      "wrong_answers": [
+        "SecurityEvent | where EventID == 4656 and Account == 'user@domain.com'",
+        "AzureMetrics | where ResourceProvider == 'Microsoft.Resources' and MetricName == 'Delete'",
+        "Event | where Source == 'Azure' and EventLevelName == 'Warning'",
+        "Heartbeat | where ComputerName contains 'user' and TimeGenerated > ago(30d)"
+      ],
+      "explanation": "AzureActivity table contains Activity Log events including resource operations. Filtering by OperationName for delete operations and Caller for the specific user provides the required information.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/activity-log-schema",
+        "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/get-started-queries"
+      ],
+      "category": "Monitoring and Backup"
+    },
+    {
+      "question": "You have configured Azure Site Recovery for VMs in your primary region to replicate to a secondary region. You need to test the disaster recovery process without impacting production. What should you do?",
+      "correct_answer": "Perform a test failover to create isolated test VMs in the secondary region",
+      "wrong_answers": [
+        "Execute a planned failover with automatic failback",
+        "Create manual snapshots of all VMs and restore in secondary region",
+        "Configure cross-region load balancing for traffic distribution",
+        "Use Azure Backup restore to create VMs in secondary region"
+      ],
+      "explanation": "Test failover creates isolated copies of replicated VMs in the secondary region for testing purposes without affecting ongoing replication or production systems.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-test-failover-to-azure",
+        "https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-tutorial-dr-drill"
+      ],
+      "category": "Monitoring and Backup"
+    },
+    {
+      "question": "You need to configure monitoring for an Azure Storage account to track failed authentication attempts and unusual access patterns. The monitoring should provide near real-time alerting. What should you implement?",
+      "correct_answer": "Diagnostic settings to send storage logs to Log Analytics with custom alert rules",
+      "wrong_answers": [
+        "Azure Security Center with storage threat protection only",
+        "Storage account metrics in Azure Monitor",
+        "Network security group flow logs for storage traffic",
+        "Azure Sentinel with storage account connector"
+      ],
+      "explanation": "Diagnostic settings can stream storage account logs to Log Analytics, enabling custom KQL queries and alert rules for authentication failures and access pattern analysis.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/storage/blobs/monitor-blob-storage",
+        "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings"
+      ],
+      "category": "Monitoring and Backup"
+    },
+    {
+      "question": "You have a Log Analytics workspace collecting data from multiple sources. You need to control costs by setting different retention periods for different data types. What should you configure?",
+      "correct_answer": "Data retention settings per table type in the Log Analytics workspace",
+      "wrong_answers": [
+        "Separate Log Analytics workspaces for each data type",
+        "Data export rules to cheaper storage tiers",
+        "Sampling rules to reduce data ingestion volume",
+        "Archive policies in Azure Storage for log data"
+      ],
+      "explanation": "Log Analytics allows configuration of different retention periods for different table types (e.g., SecurityEvent, Perf, Heartbeat) to optimize costs while meeting compliance requirements.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-archive",
+        "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/manage-cost-storage"
+      ],
+      "category": "Monitoring and Backup"
+    },
+    {
+      "question": "You need to create a backup policy for Azure VMs that takes daily backups at 2 AM with different retention periods: daily backups for 30 days, weekly backups for 12 weeks, and monthly backups for 12 months. What should you configure?",
+      "correct_answer": "Enhanced backup policy with daily, weekly, and monthly retention schedules",
+      "wrong_answers": [
+        "Standard backup policy with daily backups only",
+        "Multiple backup policies for different retention requirements",
+        "Azure Automation runbook for custom backup scheduling",
+        "Snapshot-based backup with manual retention management"
+      ],
+      "explanation": "Enhanced backup policies support complex retention schedules with different retention periods for daily, weekly, monthly, and yearly backup points from a single policy.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/backup/backup-azure-vm-backup-faq",
+        "https://learn.microsoft.com/en-us/azure/backup/backup-instant-restore-capability"
+      ],
+      "category": "Monitoring and Backup"
+    },
+    {
+      "question": "You are monitoring Azure SQL Database performance and need to identify queries that are consuming the most CPU resources. What should you use to analyze query performance?",
+      "correct_answer": "Query Performance Insight and Query Store in Azure SQL Database",
+      "wrong_answers": [
+        "Azure Monitor metrics for SQL Database only",
+        "Log Analytics with SQL assessment solution",
+        "Application Insights dependency tracking",
+        "Azure Advisor performance recommendations"
+      ],
+      "explanation": "Query Performance Insight and Query Store provide detailed query-level performance analysis, including CPU consumption, execution statistics, and query plans for Azure SQL Database.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/azure-sql/database/query-performance-insight-use",
+        "https://learn.microsoft.com/en-us/azure/azure-sql/database/monitoring-tuning-index"
+      ],
+      "category": "Monitoring and Backup"
+    },
+    {
+      "question": "You need to configure Azure Monitor to collect custom application logs from VMs running a proprietary application. The logs are written to a specific file path. What should you implement?",
+      "correct_answer": "Azure Monitor Agent with custom log collection rules",
+      "wrong_answers": [
+        "Log Analytics gateway for custom log forwarding",
+        "Azure Diagnostics extension with custom log paths",
+        "Application Insights with custom telemetry",
+        "Azure Event Hubs for log streaming"
+      ],
+      "explanation": "Azure Monitor Agent (AMA) with data collection rules can be configured to collect custom logs from specific file paths and send them to Log Analytics workspaces.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-overview",
+        "https://learn.microsoft.com/en-us/azure/azure-monitor/agents/data-collection-rule-azure-monitor-agent"
+      ],
+      "category": "Monitoring and Backup"
+    },
+    {
+      "question": "You have Azure Site Recovery configured for on-premises VMware VMs replicating to Azure. You need to ensure that replicated VMs maintain the same IP addresses after failover. What should you configure?",
+      "correct_answer": "IP address retention settings in Site Recovery with matching subnet configuration in Azure",
+      "wrong_answers": [
+        "Static IP assignment in the on-premises environment only",
+        "Azure Load Balancer with IP preservation rules",
+        "Network security groups with IP address mapping",
+        "ExpressRoute with private peering for IP consistency"
+      ],
+      "explanation": "Site Recovery supports IP address retention during failover when the Azure virtual network has matching subnet configurations and IP address retention is enabled in the replication settings.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/site-recovery/concepts-on-premises-to-azure-networking",
+        "https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-retain-ip-azure-vm-failover"
+      ],
+      "category": "Monitoring and Backup"
+    },
+    {
+      "question": "You need to create a comprehensive monitoring dashboard that shows the health status of all Azure resources across multiple subscriptions. The dashboard should be accessible to stakeholders who don't have Azure portal access. What should you create?",
+      "correct_answer": "Azure Dashboard with shared access configuration or Power BI reports using Azure Monitor data",
+      "wrong_answers": [
+        "Log Analytics workspace with custom views only",
+        "Azure Monitor workbooks for internal use",
+        "Application Insights application map",
+        "Azure Service Health status page"
+      ],
+      "explanation": "Azure Dashboards can be shared with external stakeholders via sharing links, or Power BI can create public reports using Azure Monitor data for stakeholders without Azure access.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboards",
+        "https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/powerbi"
+      ],
+      "category": "Monitoring and Backup"
+    },
+    {
+      "question": "You have configured backup for Azure File shares. Users report that they accidentally deleted important files and need to restore them from yesterday's backup. What restore option should you use?",
+      "correct_answer": "Item-level restore to recover specific files from the backup",
+      "wrong_answers": [
+        "Full share restore to a new location",
+        "Snapshot-based restore from share snapshots",
+        "Cross-region restore from geo-redundant backup",
+        "Point-in-time restore for the entire storage account"
+      ],
+      "explanation": "Azure Backup for File shares supports item-level restore, allowing recovery of specific files or folders from backup without restoring the entire file share.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/backup/restore-afs",
+        "https://learn.microsoft.com/en-us/azure/backup/backup-afs"
+      ],
+      "category": "Monitoring and Backup"
+    },
+    {
+      "question": "You need to monitor the performance of applications running on Azure VMs. The monitoring should include application dependencies, performance counters, and custom metrics. What combination of tools should you implement?",
+      "correct_answer": "Application Insights for application monitoring and Azure Monitor Agent for infrastructure metrics",
+      "wrong_answers": [
+        "Log Analytics workspace with performance monitoring solution only",
+        "Azure Advisor with performance recommendations",
+        "Network Watcher for application dependency mapping",
+        "Azure Security Center with performance assessments"
+      ],
+      "explanation": "Application Insights provides comprehensive application performance monitoring including dependencies and custom metrics, while Azure Monitor Agent collects infrastructure performance counters and metrics.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview",
+        "https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-overview"
+      ],
+      "category": "Monitoring and Backup"
+    },
+    {
+      "question": "You have a Recovery Services vault with multiple backup policies. You need to modify the backup schedule for a specific policy from daily to twice daily. The change should not affect existing recovery points. What should you do?",
+      "correct_answer": "Modify the existing backup policy schedule settings",
+      "wrong_answers": [
+        "Create a new backup policy and migrate all protected items",
+        "Delete and recreate the backup policy with new schedule",
+        "Use PowerShell to modify individual backup schedules",
+        "Configure additional backup policies for twice-daily schedule"
+      ],
+      "explanation": "Backup policy modifications take effect for future backups without affecting existing recovery points. The schedule can be updated directly in the policy settings.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/backup/backup-azure-manage-vms",
+        "https://learn.microsoft.com/en-us/azure/backup/backup-azure-policy-supported-skus"
+      ],
+      "category": "Monitoring and Backup"
+    },
+    {
+      "question": "You need to implement monitoring for Azure Kubernetes Service (AKS) that provides insights into container performance, resource utilization, and application logs. What should you enable?",
+      "correct_answer": "Container Insights in Azure Monitor",
+      "wrong_answers": [
+        "Application Insights for container applications only",
+        "Log Analytics workspace with Kubernetes solution",
+        "Azure Security Center for container monitoring",
+        "Network Watcher for container networking"
+      ],
+      "explanation": "Container Insights provides comprehensive monitoring for AKS clusters, including container performance metrics, resource utilization, and log collection for containers and nodes.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview",
+        "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-enable-existing-clusters"
+      ],
+      "category": "Monitoring and Backup"
+    }
+  ]
+}

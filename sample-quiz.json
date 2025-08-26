@@ -1,0 +1,96 @@
+{
+  "title": "AZ-104 Azure Administrator Sample Questions",
+  "questions": [
+    {
+      "question": "Which Azure service provides a managed relational database service?",
+      "correct_answer": "Azure SQL Database",
+      "wrong_answers": [
+        "Azure Storage Account",
+        "Azure Virtual Machines", 
+        "Azure App Service",
+        "Azure Key Vault"
+      ],
+      "explanation": "Azure SQL Database is a fully managed relational database service built on the latest stable version of Microsoft SQL Server database engine.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/azure-sql/database/",
+        "AZ-104 Study Guide Chapter 7"
+      ],
+      "category": "Data Services"
+    },
+    {
+      "question": "What is the maximum number of virtual machines that can be deployed in a single Azure availability set?",
+      "correct_answer": "200",
+      "wrong_answers": [
+        "50",
+        "100",
+        "300",
+        "500"
+      ],
+      "explanation": "An availability set can contain up to 200 virtual machines to provide high availability and fault tolerance.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview"
+      ],
+      "category": "Virtual Machines"
+    },
+    {
+      "question": "Which Azure networking component allows you to filter network traffic to and from Azure resources?",
+      "correct_answer": "Network Security Group (NSG)",
+      "wrong_answers": [
+        "Virtual Network Gateway",
+        "Load Balancer",
+        "Application Gateway",
+        "Traffic Manager"
+      ],
+      "explanation": "Network Security Groups contain security rules that allow or deny inbound and outbound network traffic to several types of Azure resources.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview"
+      ],
+      "category": "Networking"
+    },
+    {
+      "question": "What is the purpose of Azure Resource Manager (ARM) templates?",
+      "correct_answer": "Infrastructure as Code deployment",
+      "wrong_answers": [
+        "Managing user permissions",
+        "Monitoring resource performance",
+        "Creating backup policies",
+        "Configuring network routing"
+      ],
+      "explanation": "ARM templates enable Infrastructure as Code by defining Azure resources and their configurations in JSON format for consistent, repeatable deployments.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/"
+      ],
+      "category": "Resource Management"
+    },
+    {
+      "question": "Which Azure storage redundancy option provides the highest level of durability?",
+      "correct_answer": "Geo-redundant storage (GRS)",
+      "wrong_answers": [
+        "Locally redundant storage (LRS)",
+        "Zone-redundant storage (ZRS)",
+        "Read-access geo-redundant storage (RA-GRS)",
+        "Premium storage"
+      ],
+      "explanation": "GRS replicates data to a secondary region hundreds of miles away from the primary region, providing the highest level of durability.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy"
+      ],
+      "category": "Storage"
+    },
+    {
+      "question": "What is the Azure service that provides centralized management of security policies across subscriptions?",
+      "correct_answer": "Azure Policy",
+      "wrong_answers": [
+        "Azure Security Center",
+        "Azure Active Directory",
+        "Azure Key Vault",
+        "Azure Monitor"
+      ],
+      "explanation": "Azure Policy helps enforce organizational standards and assess compliance at scale by defining and assigning policies across Azure resources.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/governance/policy/"
+      ],
+      "category": "Governance"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "title": "AZ-104 Virtual Networking Advanced Questions",
+  "description": "Advanced questions covering virtual networks, security, DNS, load balancing, and connectivity - 15-20% of exam",
+  "questions": [
+    {
+      "question": "You have two virtual networks in different regions that need to communicate. You want to route traffic through a central hub VNet that contains security appliances. What network topology should you implement?",
+      "correct_answer": "Hub-and-spoke topology with VNet peering and user-defined routes (UDR)",
+      "wrong_answers": [
+        "Mesh topology with direct VNet peering between all networks",
+        "Site-to-site VPN connections between all VNets",
+        "Virtual WAN with regional hubs",
+        "ExpressRoute global reach connectivity"
+      ],
+      "explanation": "Hub-and-spoke topology with VNet peering allows centralized traffic inspection through security appliances in the hub, using UDRs to force traffic routing through the hub VNet.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke",
+        "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "You need to ensure that VMs in a subnet can only communicate with specific Azure services and block all internet access. The solution should allow access to Azure Storage and Azure Key Vault. What should you configure?",
+      "correct_answer": "Service endpoints for Storage and Key Vault with NSG rules blocking internet",
+      "wrong_answers": [
+        "Private endpoints for all Azure services",
+        "Azure Firewall with application rules",
+        "Network security groups with service tags only",
+        "Virtual network NAT gateway configuration"
+      ],
+      "explanation": "Service endpoints provide secure connectivity to Azure services over the Azure backbone network, combined with NSG rules to block internet access while allowing specific Azure services.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview",
+        "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "You have an Azure Load Balancer distributing traffic to VMs in an availability set. One VM becomes unhealthy and stops responding to health probes. How long will it take for the load balancer to stop sending traffic to the unhealthy VM?",
+      "correct_answer": "After the number of consecutive probe failures defined in the unhealthy threshold",
+      "wrong_answers": [
+        "Immediately after the first failed health probe",
+        "After a fixed 30-second timeout period",
+        "After all VMs in the backend pool are checked",
+        "After the probe interval timeout expires"
+      ],
+      "explanation": "Azure Load Balancer uses health probes with configurable unhealthy threshold settings that determine how many consecutive probe failures are required before marking a VM as unhealthy and removing it from rotation.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview",
+        "https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-troubleshoot-health-probe-status"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "You need to configure Azure DNS to resolve custom domain names for resources in your virtual network. External clients should not be able to resolve these names. What should you create?",
+      "correct_answer": "Private DNS zone linked to the virtual network",
+      "wrong_answers": [
+        "Public DNS zone with restricted access",
+        "Conditional forwarder in Azure DNS",
+        "DNS server on a virtual machine",
+        "Azure Traffic Manager profile"
+      ],
+      "explanation": "Private DNS zones provide name resolution for resources within linked virtual networks without exposing the DNS records to external clients, maintaining internal DNS privacy.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/dns/private-dns-overview",
+        "https://learn.microsoft.com/en-us/azure/dns/private-dns-getstarted-portal"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "You have an Application Gateway that needs to perform SSL termination and route traffic to backend servers based on URL paths. The backend servers require end-to-end SSL encryption. What should you configure?",
+      "correct_answer": "SSL termination at Application Gateway with re-encryption to backend pools",
+      "wrong_answers": [
+        "SSL passthrough without termination at Application Gateway",
+        "SSL termination only with HTTP to backend servers",
+        "Client certificates for backend authentication",
+        "Network security groups for SSL traffic filtering"
+      ],
+      "explanation": "Application Gateway can terminate SSL at the gateway for inspection and routing decisions, then re-encrypt traffic to backend servers to maintain end-to-end encryption security.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/application-gateway/ssl-overview",
+        "https://learn.microsoft.com/en-us/azure/application-gateway/end-to-end-ssl-portal"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "You need to troubleshoot connectivity issues between VMs in different subnets within the same virtual network. What Azure tool should you use to verify network paths and identify blocking rules?",
+      "correct_answer": "Network Watcher Connection Monitor and Next Hop",
+      "wrong_answers": [
+        "Azure Monitor Network Insights only",
+        "Network security group flow logs",
+        "Azure Traffic Analytics",
+        "Virtual network topology viewer"
+      ],
+      "explanation": "Network Watcher provides Connection Monitor for ongoing connectivity testing and Next Hop capability to trace network paths and identify where traffic is being blocked or routed incorrectly.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview",
+        "https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-next-hop-overview"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "You have a subnet that hosts database servers. You need to ensure that these servers can initiate outbound connections for updates but cannot receive any inbound connections from the internet. What should you configure?",
+      "correct_answer": "Network Address Translation (NAT) Gateway for outbound connectivity with NSG blocking inbound",
+      "wrong_answers": [
+        "Public IP addresses with inbound NSG rules only",
+        "Azure Firewall with outbound rules only",
+        "Application Security Groups for database isolation",
+        "Service endpoints for update services"
+      ],
+      "explanation": "NAT Gateway provides secure outbound internet connectivity for resources in private subnets without exposing them to inbound connections, combined with NSG rules to ensure no inbound access.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/virtual-network/nat-gateway/nat-overview",
+        "https://learn.microsoft.com/en-us/azure/virtual-network/nat-gateway/tutorial-create-nat-gateway-portal"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "You are configuring VNet peering between two virtual networks. The peering connection shows as 'Connected' but VMs cannot communicate. What is the most likely cause?",
+      "correct_answer": "Network security group rules are blocking traffic between the subnets",
+      "wrong_answers": [
+        "VNet peering is not bidirectional",
+        "Virtual networks are in different Azure regions",
+        "Route tables are not configured for peering",
+        "Private IP address ranges are overlapping"
+      ],
+      "explanation": "When VNet peering status shows 'Connected' but communication fails, NSG rules are typically blocking the traffic, as peering provides connectivity but NSGs still control traffic flow.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-troubleshoot-peering-issues",
+        "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "You need to configure Azure Bastion to provide secure RDP access to VMs. The VMs are in a subnet without public IP addresses. What network configuration is required for Azure Bastion?",
+      "correct_answer": "Dedicated AzureBastionSubnet with /27 or larger address space",
+      "wrong_answers": [
+        "Shared subnet with VMs using /29 address space",
+        "Any subnet in the virtual network with public IP",
+        "Gateway subnet with VPN configuration",
+        "Private endpoint subnet with /28 address space"
+      ],
+      "explanation": "Azure Bastion requires a dedicated subnet named 'AzureBastionSubnet' with a minimum /27 address space to provide secure RDP/SSH access to VMs without public IPs.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/bastion/bastion-overview",
+        "https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "You have an Azure Load Balancer with multiple backend pools serving different applications. You need to route HTTP traffic to different backend pools based on the URL path. What should you implement?",
+      "correct_answer": "Replace Azure Load Balancer with Application Gateway for Layer 7 routing",
+      "wrong_answers": [
+        "Configure multiple load balancing rules with different ports",
+        "Use Network Security Groups for traffic routing",
+        "Implement Azure Traffic Manager for path-based routing",
+        "Configure multiple frontend IP configurations"
+      ],
+      "explanation": "Azure Load Balancer operates at Layer 4 and cannot route based on URL paths. Application Gateway provides Layer 7 capabilities including path-based routing for HTTP/HTTPS traffic.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components",
+        "https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "You need to monitor network traffic between application tiers for security analysis. The solution should capture all traffic flows with source, destination, and protocol information. What should you enable?",
+      "correct_answer": "NSG Flow Logs with Network Watcher",
+      "wrong_answers": [
+        "Azure Monitor Network Insights only",
+        "Packet capture on individual VMs",
+        "Azure Security Center network monitoring",
+        "Virtual network diagnostic logs"
+      ],
+      "explanation": "NSG Flow Logs capture information about IP traffic flowing through network security groups, providing detailed flow data for security analysis and network monitoring.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-nsg-flow-logging-overview",
+        "https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-nsg-flow-logging-portal"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "You have a virtual network with multiple subnets. You need to ensure that traffic from one subnet to another always passes through a network virtual appliance (NVA) for inspection. What should you configure?",
+      "correct_answer": "User-defined routes (UDR) with next hop type Virtual Appliance",
+      "wrong_answers": [
+        "Network security groups with forced tunneling",
+        "Virtual network peering with route filters",
+        "Application security groups for traffic control",
+        "Service chaining with load balancers"
+      ],
+      "explanation": "User-defined routes override default system routes and can force traffic to flow through a network virtual appliance by specifying the NVA as the next hop for specific destination addresses.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview",
+        "https://learn.microsoft.com/en-us/azure/virtual-network/tutorial-create-route-table-portal"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "You are configuring ExpressRoute connectivity to Azure. You need to ensure that traffic to Microsoft 365 services uses the ExpressRoute connection while internet traffic uses the local internet breakout. What should you configure?",
+      "correct_answer": "ExpressRoute Microsoft peering with route filters for Office 365 services",
+      "wrong_answers": [
+        "ExpressRoute private peering with custom routes",
+        "ExpressRoute public peering for all Microsoft services",
+        "Site-to-site VPN with split tunneling",
+        "Virtual WAN with routing policies"
+      ],
+      "explanation": "ExpressRoute Microsoft peering with route filters allows selective routing of Microsoft services like Office 365 through ExpressRoute while maintaining internet breakout for other traffic.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-routing",
+        "https://learn.microsoft.com/en-us/azure/expressroute/how-to-routefilter-portal"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "You have configured a Point-to-Site VPN for remote users. Users report intermittent connectivity issues. You need to troubleshoot the VPN connections and identify disconnection causes. What should you use?",
+      "correct_answer": "VPN Gateway diagnostics and Connection Monitor in Network Watcher",
+      "wrong_answers": [
+        "Azure Monitor alerts for VPN metrics only",
+        "Network security group flow logs",
+        "Azure Traffic Analytics",
+        "Virtual network topology viewer"
+      ],
+      "explanation": "VPN Gateway diagnostics provide detailed information about connection issues, while Network Watcher Connection Monitor can continuously test VPN connectivity and identify disconnection patterns.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-troubleshoot",
+        "https://learn.microsoft.com/en-us/azure/network-watcher/connection-monitor-overview"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "You need to provide secure access to an Azure PaaS service (Azure SQL Database) from VMs in your virtual network without allowing access from the public internet. What is the most secure approach?",
+      "correct_answer": "Configure a private endpoint for the Azure SQL Database",
+      "wrong_answers": [
+        "Use service endpoints with firewall rules",
+        "Configure SQL Database firewall with VNet rules only",
+        "Use Azure Bastion for database connections",
+        "Implement VPN Gateway for database access"
+      ],
+      "explanation": "Private endpoints provide the most secure access by bringing the PaaS service into your virtual network with a private IP address, completely eliminating public internet exposure.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview",
+        "https://learn.microsoft.com/en-us/azure/azure-sql/database/private-endpoint-overview"
+      ],
+      "category": "Virtual Networking"
+    }
+  ]
+}

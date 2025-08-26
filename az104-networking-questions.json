@@ -1,0 +1,156 @@
+{
+  "title": "AZ-104 Networking and Security Questions",
+  "description": "Focused question bank for Azure Networking and Security topics",
+  "questions": [
+    {
+      "question": "You need to allow Azure services to access a storage account while blocking all other internet traffic. What should you configure?",
+      "correct_answer": "Storage account firewall with 'Allow trusted Microsoft services' exception",
+      "wrong_answers": [
+        "Network Security Group rules only",
+        "Service endpoints only",
+        "Private endpoints only",
+        "Azure Firewall rules"
+      ],
+      "explanation": "Storage account firewall can be configured to block all public access except for trusted Microsoft services, providing secure access for Azure services.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/storage/common/storage-network-security"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "What is the maximum number of public IP addresses that can be associated with a single network interface?",
+      "correct_answer": "1 public IP per IP configuration",
+      "wrong_answers": [
+        "1 public IP total",
+        "5 public IPs total",
+        "10 public IPs total",
+        "Unlimited"
+      ],
+      "explanation": "Each IP configuration on a network interface can have one public IP address. A single NIC can have multiple IP configurations.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-multiple-ip-addresses-portal"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "Which Azure service provides a centralized network security policy management across multiple subscriptions?",
+      "correct_answer": "Azure Firewall Manager",
+      "wrong_answers": [
+        "Network Security Groups",
+        "Application Security Groups",
+        "Azure Front Door",
+        "Traffic Manager"
+      ],
+      "explanation": "Azure Firewall Manager provides central security policy and route management for cloud-based security perimeters across multiple subscriptions and virtual networks.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/firewall-manager/overview"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "What is the purpose of Azure Application Gateway?",
+      "correct_answer": "Provide Layer 7 load balancing and web application firewall",
+      "wrong_answers": [
+        "Provide Layer 4 load balancing only",
+        "Manage DNS resolution",
+        "Provide VPN connectivity",
+        "Monitor network traffic"
+      ],
+      "explanation": "Application Gateway is a Layer 7 load balancer that provides SSL termination, cookie-based session affinity, and optional web application firewall capabilities.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/application-gateway/overview"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "Which feature allows you to filter network traffic between subnets in a virtual network?",
+      "correct_answer": "Network Security Groups (NSGs)",
+      "wrong_answers": [
+        "Route tables only",
+        "Service endpoints",
+        "VNet peering",
+        "DNS zones"
+      ],
+      "explanation": "Network Security Groups contain security rules that filter network traffic between subnets and to/from resources within Azure virtual networks.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "What is the difference between service endpoints and private endpoints?",
+      "correct_answer": "Private endpoints provide a private IP, service endpoints extend VNet identity",
+      "wrong_answers": [
+        "Service endpoints are more secure than private endpoints",
+        "Private endpoints only work with storage accounts",
+        "Service endpoints require additional costs",
+        "There is no difference between them"
+      ],
+      "explanation": "Service endpoints extend VNet identity to Azure services over the Azure backbone, while private endpoints provide a private IP address for Azure services in your VNet.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "Which Azure service should you use to connect multiple virtual networks across different regions?",
+      "correct_answer": "Virtual network peering",
+      "wrong_answers": [
+        "VPN Gateway only",
+        "ExpressRoute only",
+        "Azure Firewall",
+        "Load Balancer"
+      ],
+      "explanation": "Virtual network peering connects virtual networks seamlessly across regions through the Azure backbone network, enabling resources to communicate as if in the same network.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "What is the purpose of Azure Bastion?",
+      "correct_answer": "Provide secure RDP and SSH access without exposing public IPs",
+      "wrong_answers": [
+        "Load balance traffic between VMs",
+        "Monitor network performance",
+        "Provide DNS resolution",
+        "Manage network security groups"
+      ],
+      "explanation": "Azure Bastion provides secure and seamless RDP and SSH connectivity to VMs directly through the Azure portal without exposing VMs to public IP addresses.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/bastion/bastion-overview"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "Which protocol does Azure VPN Gateway use for site-to-site connections?",
+      "correct_answer": "IPsec/IKE",
+      "wrong_answers": [
+        "SSTP only",
+        "OpenVPN only",
+        "L2TP only",
+        "PPTP only"
+      ],
+      "explanation": "Azure VPN Gateway uses IPsec/IKE protocols for site-to-site VPN connections, providing secure encrypted tunnels between on-premises and Azure networks.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways"
+      ],
+      "category": "Virtual Networking"
+    },
+    {
+      "question": "What is the maximum bandwidth for ExpressRoute Direct?",
+      "correct_answer": "100 Gbps",
+      "wrong_answers": [
+        "1 Gbps",
+        "10 Gbps",
+        "50 Gbps",
+        "200 Gbps"
+      ],
+      "explanation": "ExpressRoute Direct provides dual 100 Gbps connectivity directly into Microsoft's global network at peering locations strategically distributed around the world.",
+      "references": [
+        "https://docs.microsoft.com/en-us/azure/expressroute/expressroute-erdirect-about"
+      ],
+      "category": "Virtual Networking"
+    }
+  ]
+}

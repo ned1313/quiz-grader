@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certification Quiz Grader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .question-card {
+            transition: all 0.3s ease;
+        }
+        .question-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .answer-option {
+            transition: all 0.2s ease;
+        }
+        .answer-option:hover {
+            background-color: #f3f4f6;
+        }
+        .correct-answer {
+            background-color: #d1fae5;
+            border-color: #10b981;
+        }
+        .incorrect-answer {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+        .selected-answer {
+            background-color: #dbeafe;
+            border-color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Header -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 text-center mb-4">Certification Quiz Grader</h1>
+            
+            <!-- File Upload Section -->
+            <div id="upload-section" class="mb-6">
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                    <input type="file" id="quiz-file" accept=".json" class="hidden">
+                    <label for="quiz-file" class="cursor-pointer">
+                        <div class="text-gray-600">
+                            <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <p class="text-lg font-medium">Upload Quiz JSON File</p>
+                            <p class="text-sm text-gray-500">Click to browse or drag and drop</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Mode Selection -->
+            <div id="mode-selection" class="hidden mb-6">
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">Select Quiz Mode:</h3>
+                <div class="flex gap-4">
+                    <button id="practice-mode" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                        Practice Mode
+                    </button>
+                    <button id="exam-mode" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                        Exam Mode
+                    </button>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    <strong>Practice Mode:</strong> See correct answers immediately after each question<br>
+                    <strong>Exam Mode:</strong> Grade all answers at the end
+                </p>
+            </div>
+
+            <!-- Quiz Info -->
+            <div id="quiz-info" class="hidden">
+                <h2 id="quiz-title" class="text-xl font-semibold text-gray-700 mb-2"></h2>
+                <p id="quiz-stats" class="text-gray-600"></p>
+            </div>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-container" class="hidden">
+            <div id="questions-container" class="space-y-6">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+            
+            <!-- Grade Button -->
+            <div class="text-center mt-8">
+                <button id="grade-quiz" class="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-lg font-bold text-lg transition-colors shadow-lg">
+                    Grade Quiz
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results-section" class="hidden">
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Quiz Results</h2>
+                <div id="results-summary" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <!-- Results will be dynamically inserted here -->
+                </div>
+                
+                <!-- Category Breakdown -->
+                <div id="category-breakdown" class="mb-6">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-3">Results by Category</h3>
+                    <div id="category-results" class="space-y-2">
+                        <!-- Category results will be dynamically inserted here -->
+                    </div>
+                </div>
+
+                <!-- Review Options -->
+                <div class="flex gap-4">
+                    <button id="review-all" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                        Review All Questions
+                    </button>
+                    <button id="review-incorrect" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                        Review Incorrect Only
+                    </button>
+                    <button id="restart-quiz" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                        New Quiz
+                    </button>
+                </div>
+            </div>
+
+            <!-- Review Container -->
+            <div id="review-container" class="hidden space-y-6">
+                <!-- Review questions will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

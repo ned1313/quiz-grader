@@ -1,0 +1,246 @@
+{
+  "title": "AZ-104 Identity and Governance Advanced Questions",
+  "description": "Advanced questions covering Microsoft Entra ID, RBAC, Azure Policy, and governance - 20-25% of exam",
+  "questions": [
+    {
+      "question": "You need to configure self-service password reset (SSPR) for your organization. Users should be required to provide both their mobile phone and email address for authentication. What is the minimum number of authentication methods you should configure?",
+      "correct_answer": "2",
+      "wrong_answers": [
+        "1",
+        "3",
+        "4",
+        "5"
+      ],
+      "explanation": "SSPR requires a minimum of 2 authentication methods when you want users to provide both mobile phone and email. This ensures users have multiple ways to verify their identity during password reset.",
+      "references": [
+        "https://learn.microsoft.com/en-us/entra/identity/authentication/concept-sspr-howitworks",
+        "https://learn.microsoft.com/en-us/entra/identity/authentication/howto-sspr-deployment"
+      ],
+      "category": "Identity and Governance"
+    },
+    {
+      "question": "Your company has multiple Azure subscriptions. You need to ensure that all virtual machines created in any subscription must have specific tags applied. What should you implement?",
+      "correct_answer": "Azure Policy with a 'Require a tag and its value' effect",
+      "wrong_answers": [
+        "Azure Blueprints with resource templates",
+        "Management groups with inherited permissions",
+        "Azure Resource Manager templates with mandatory parameters",
+        "Azure Automation runbooks with tag enforcement"
+      ],
+      "explanation": "Azure Policy with the 'Require a tag and its value' effect can enforce tag requirements across all subscriptions. This policy will deny the creation of resources that don't have the required tags.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects",
+        "https://learn.microsoft.com/en-us/azure/governance/policy/samples/require-tag-value"
+      ],
+      "category": "Identity and Governance"
+    },
+    {
+      "question": "You have a resource group named RG1 that contains several virtual machines. You need to prevent users from accidentally deleting the virtual machines while still allowing them to modify VM configurations. What should you configure?",
+      "correct_answer": "CanNotDelete resource lock on RG1",
+      "wrong_answers": [
+        "ReadOnly resource lock on RG1",
+        "Deny assignment on the virtual machines",
+        "Azure Policy with DeployIfNotExists effect",
+        "Custom RBAC role with limited delete permissions"
+      ],
+      "explanation": "A CanNotDelete resource lock prevents deletion of resources but allows modifications. When applied to a resource group, it protects all resources within that group from deletion.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources",
+        "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources?tabs=json"
+      ],
+      "category": "Identity and Governance"
+    },
+    {
+      "question": "You need to create a custom RBAC role that allows users to start and stop virtual machines but not create or delete them. Which actions should you include in the role definition?",
+      "correct_answer": "Microsoft.Compute/virtualMachines/start/action and Microsoft.Compute/virtualMachines/deallocate/action",
+      "wrong_answers": [
+        "Microsoft.Compute/virtualMachines/write and Microsoft.Compute/virtualMachines/read",
+        "Microsoft.Compute/virtualMachines/* and Microsoft.Compute/disks/read",
+        "Microsoft.Compute/virtualMachines/restart/action only",
+        "Microsoft.Authorization/*/write and Microsoft.Compute/virtualMachines/read"
+      ],
+      "explanation": "The start/action and deallocate/action permissions specifically allow starting and stopping VMs without granting broader create, delete, or modification permissions.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations#microsoftcompute",
+        "https://learn.microsoft.com/en-us/azure/role-based-access-control/custom-roles"
+      ],
+      "category": "Identity and Governance"
+    },
+    {
+      "question": "Your organization uses management groups to organize subscriptions. You have applied an Azure Policy at the management group level. A subscription owner claims they cannot see the policy assignment in their subscription. What is the most likely cause?",
+      "correct_answer": "The policy assignment is inherited from the management group and appears under 'Inherited assignments'",
+      "wrong_answers": [
+        "The subscription owner doesn't have sufficient permissions to view policies",
+        "The policy assignment failed to deploy to the subscription",
+        "Management group policies don't apply to child subscriptions",
+        "The policy has an exclusion for that specific subscription"
+      ],
+      "explanation": "Policy assignments made at management group level are inherited by all child subscriptions and resource groups. They appear under 'Inherited assignments' in the Azure portal rather than direct assignments.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+        "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
+      ],
+      "category": "Identity and Governance"
+    },
+    {
+      "question": "You need to ensure that all users in a specific Azure AD group can reset their own passwords without administrator intervention. The solution must minimize administrative overhead. What should you configure?",
+      "correct_answer": "Enable SSPR for the organization and add the group to the SSPR scope",
+      "wrong_answers": [
+        "Assign the Password Administrator role to all group members",
+        "Create a conditional access policy for the group",
+        "Enable Password Protection for Azure AD",
+        "Configure MFA requirements for the group"
+      ],
+      "explanation": "Self-Service Password Reset (SSPR) can be enabled for specific groups, allowing those users to reset their passwords independently without requiring administrative roles or intervention.",
+      "references": [
+        "https://learn.microsoft.com/en-us/entra/identity/authentication/tutorial-enable-sspr",
+        "https://learn.microsoft.com/en-us/entra/identity/authentication/howto-sspr-deployment"
+      ],
+      "category": "Identity and Governance"
+    },
+    {
+      "question": "You have an Azure subscription with multiple resource groups. You want to track costs by department. Each department should only see costs for their own resources. What is the most effective approach?",
+      "correct_answer": "Apply department tags to resources and use Cost Management filters with RBAC scoping",
+      "wrong_answers": [
+        "Create separate subscriptions for each department",
+        "Use Azure Budgets with email notifications to department heads",
+        "Create management groups for each department",
+        "Configure Azure Advisor cost recommendations by department"
+      ],
+      "explanation": "Resource tags combined with Cost Management filtering and proper RBAC scoping allows departments to see only their costs while maintaining resources in the same subscription for management efficiency.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/group-filter",
+        "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources"
+      ],
+      "category": "Identity and Governance"
+    },
+    {
+      "question": "You need to configure Azure Policy to automatically add a specific tag to all storage accounts created in your subscription. If the tag is missing, the policy should add it with a default value. Which policy effect should you use?",
+      "correct_answer": "Modify",
+      "wrong_answers": [
+        "Append",
+        "DeployIfNotExists",
+        "AuditIfNotExists",
+        "Deny"
+      ],
+      "explanation": "The Modify effect can add, update, or remove tags and other properties on resources during creation or update operations. It's specifically designed for tag management scenarios.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects#modify",
+        "https://learn.microsoft.com/en-us/azure/governance/policy/how-to/modify-resources"
+      ],
+      "category": "Identity and Governance"
+    },
+    {
+      "question": "Your company has guest users from partner organizations who need access to specific Azure resources. You want to review their access quarterly and automatically remove access if not approved. What should you implement?",
+      "correct_answer": "Azure AD Access Reviews with automatic actions",
+      "wrong_answers": [
+        "Conditional Access policies with sign-in frequency",
+        "Azure AD Identity Protection risk policies",
+        "Privileged Identity Management (PIM) eligible assignments",
+        "Azure Policy for guest user compliance"
+      ],
+      "explanation": "Azure AD Access Reviews allows you to regularly review guest user access, with options to automatically remove access if reviewers don't approve continued access during the review period.",
+      "references": [
+        "https://learn.microsoft.com/en-us/entra/id-governance/access-reviews-overview",
+        "https://learn.microsoft.com/en-us/entra/id-governance/create-access-review"
+      ],
+      "category": "Identity and Governance"
+    },
+    {
+      "question": "You have a subscription with the Contributor role assigned to a development team. You need to prevent the team from creating or modifying network security groups while maintaining their ability to manage other resources. What should you do?",
+      "correct_answer": "Create a Deny assignment for network security group operations",
+      "wrong_answers": [
+        "Remove Contributor role and assign custom role without NSG permissions",
+        "Apply an Azure Policy that denies NSG creation",
+        "Use resource locks on all existing NSGs",
+        "Create a management group with restricted permissions"
+      ],
+      "explanation": "Deny assignments explicitly prevent specific actions even when a role assignment grants access. This allows the team to keep their Contributor role while being blocked from NSG operations.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/role-based-access-control/deny-assignments",
+        "https://learn.microsoft.com/en-us/azure/role-based-access-control/deny-assignments-portal"
+      ],
+      "category": "Identity and Governance"
+    },
+    {
+      "question": "You need to ensure that all Azure resources created in your organization include mandatory tags for Cost Center and Environment. The solution should prevent resource creation if these tags are missing. Which Azure Policy definition should you use?",
+      "correct_answer": "Require a tag and its value on resources",
+      "wrong_answers": [
+        "Inherit a tag from the resource group if missing",
+        "Add or replace a tag on resources",
+        "Audit tag and its value on resources",
+        "Append tag and its value to resources"
+      ],
+      "explanation": "The 'Require a tag and its value' policy definition with the Deny effect prevents resource creation when required tags are missing, ensuring compliance before resources are deployed.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/governance/policy/samples/require-tag-value",
+        "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/definition-structure"
+      ],
+      "category": "Identity and Governance"
+    },
+    {
+      "question": "Your organization has multiple Azure subscriptions organized under management groups. You need to apply a consistent set of Azure policies, RBAC roles, and resource templates across all subscriptions. What should you use?",
+      "correct_answer": "Azure Blueprints",
+      "wrong_answers": [
+        "Azure Resource Manager templates",
+        "Azure Policy initiatives only",
+        "Azure Automation State Configuration",
+        "Azure DevOps pipelines with ARM templates"
+      ],
+      "explanation": "Azure Blueprints allows you to package policies, RBAC assignments, and ARM templates together for consistent deployment across multiple subscriptions, providing governance and compliance at scale.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/governance/blueprints/overview",
+        "https://learn.microsoft.com/en-us/azure/governance/blueprints/concepts/lifecycle"
+      ],
+      "category": "Identity and Governance"
+    },
+    {
+      "question": "You have configured Azure AD Connect to synchronize on-premises Active Directory with Azure AD. Some users report they cannot reset their passwords using SSPR. What is the most likely cause?",
+      "correct_answer": "Password writeback is not enabled in Azure AD Connect",
+      "wrong_answers": [
+        "Users don't have the correct licenses assigned",
+        "SSPR is not enabled for synchronized users",
+        "The users' accounts are not synchronized properly",
+        "Multi-factor authentication is not configured"
+      ],
+      "explanation": "Password writeback must be enabled in Azure AD Connect to allow synchronized users to reset their passwords and have the changes written back to on-premises Active Directory.",
+      "references": [
+        "https://learn.microsoft.com/en-us/entra/identity/authentication/concept-sspr-writeback",
+        "https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-device-writeback"
+      ],
+      "category": "Identity and Governance"
+    },
+    {
+      "question": "You need to create a budget alert that notifies the finance team when 80% of the monthly budget is consumed for a specific resource group. The alert should be sent immediately when the threshold is reached. What should you configure?",
+      "correct_answer": "Cost budget with actual cost alert at 80% threshold",
+      "wrong_answers": [
+        "Cost budget with forecasted cost alert at 80% threshold",
+        "Azure Monitor metric alert for billing data",
+        "Azure Advisor cost recommendations",
+        "Azure Policy for cost compliance"
+      ],
+      "explanation": "Azure Cost Management budgets can be configured with actual cost thresholds that trigger immediate alerts when spending reaches specified percentages of the budget amount.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-create-budgets",
+        "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending"
+      ],
+      "category": "Identity and Governance"
+    },
+    {
+      "question": "You have a subscription with several resource groups. You need to ensure that users can only create storage accounts in the East US region, regardless of which resource group they use. What should you implement?",
+      "correct_answer": "Azure Policy with allowed locations for Microsoft.Storage/storageAccounts",
+      "wrong_answers": [
+        "Resource locks on all resource groups outside East US",
+        "RBAC custom role with location restrictions",
+        "Management group with regional constraints",
+        "Azure Blueprints with location parameters"
+      ],
+      "explanation": "Azure Policy can restrict resource deployment to specific locations by resource type. This ensures storage accounts can only be created in allowed regions while not affecting other resource types.",
+      "references": [
+        "https://learn.microsoft.com/en-us/azure/governance/policy/samples/allowed-locations",
+        "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/definition-structure"
+      ],
+      "category": "Identity and Governance"
+    }
+  ]
+}
