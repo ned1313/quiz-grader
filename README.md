@@ -1,99 +1,87 @@
-# AZ-104 Question Bank Management
+# Technology Certification Quiz Grader
 
-This directory contains a comprehensive question bank for the Microsoft AZ-104 Azure Administrator certification exam.
+A comprehensive quiz application for studying technology certification exams with AI-generated practice questions.
 
-## 📚 Question Bank Files
+## 📚 Project Structure
 
-### Main Question Bank
+### Certification Folders
 
-- **`az104-question-bank.json`** - Comprehensive mixed questions covering all exam domains (20 questions)
+Each certification has its own folder containing:
 
-### Domain-Specific Question Banks
+- **Question bank files** - JSON files with practice questions organized by domain
+- **AI generation prompts** - Templates for creating new questions
+- **Study guides** - Certification-specific preparation materials
 
-- **`az104-storage-questions.json`** - Storage and data management questions (10 questions)
-- **`az104-vm-questions.json`** - Virtual machines and compute questions (10 questions)  
-- **`az104-networking-questions.json`** - Networking and security questions (10 questions)
+### Current Certifications
 
-### Advanced Domain-Specific Question Banks
-
-- **`az104-identity-governance-advanced.json`** - Advanced Identity and Governance questions (15 questions)
-- **`az104-storage-advanced.json`** - Advanced Storage management questions (15 questions)
-- **`az104-compute-advanced.json`** - Advanced Compute and VM management questions (15 questions)
-- **`az104-networking-advanced.json`** - Advanced Networking and security questions (15 questions)
-- **`az104-monitoring-backup-advanced.json`** - Advanced Monitoring and Backup questions (15 questions)
-
-### Sample Files
-
+- **`AZ-104/`** - Microsoft Azure Administrator Associate certification
 - **`sample-quiz.json`** - Basic sample for testing the quiz application
 
-## 🎯 AZ-104 Exam Domains Covered
+### Core Application Files
 
-### 1. Manage Azure Identities and Governance (15-20%)
+- **`index.html`** - Main quiz application interface
+- **`script.js`** - Quiz logic and functionality
+- **`Manage-QuestionBank.ps1`** - PowerShell utilities for question management
+- **`Generate-PromptTemplate.ps1`** - Interactive PowerShell script for AI prompt generation
+- **`generate-prompt-template.sh`** - Interactive bash script for AI prompt generation
+- **`PROMPT-GENERATION.md`** - Documentation for the prompt generation scripts
 
-- Azure Active Directory
-- Role-based access control (RBAC)
-- Azure Policy and Blueprints
-- Privileged Identity Management
+## 🎯 Supported Question Types
 
-### 2. Implement and Manage Storage (15-20%)
+The quiz application supports various question formats commonly found in technology certification exams:
 
-- Storage accounts and redundancy
-- Azure Blob Storage and lifecycle management
-- Azure Files and managed disks
-- Data transfer and backup solutions
+- **Multiple choice** - Single correct answer from multiple options
+- **Scenario-based** - Real-world situations testing practical application
+- **Knowledge-based** - Direct testing of concepts, limits, and technical details
+- **Mixed formats** - Combination of scenario and knowledge questions
 
-### 3. Deploy and Manage Azure Compute Resources (20-25%)
+## 🚀 How to Use the Quiz Application
 
-- Virtual machines and availability
-- VM Scale Sets and containers
-- Azure App Service and Functions
-- Automation and configuration management
+### Getting Started
 
-### 4. Configure and Manage Virtual Networking (25-30%)
-
-- Virtual networks and subnets
-- Network security groups and firewalls
-- VPN and ExpressRoute connectivity
-- Load balancing and traffic management
-
-### 5. Monitor and Back Up Azure Resources (10-15%)
-
-- Azure Monitor and Log Analytics
-- Backup and Site Recovery
-- Alerting and diagnostics
-- Performance monitoring and troubleshooting
-
-- Azure Monitor and Log Analytics
-- Alerts and action groups
-- Azure Backup and Site Recovery
-- Performance monitoring
-
-## 🚀 How to Use the Question Banks
-
-### Using Individual Files
-
-1. Load any individual JSON file into the quiz application
-2. Select Practice or Exam mode
-3. Complete the quiz and review results
+1. **Choose a certification folder** (e.g., AZ-104/)
+2. **Load a question bank file** into the quiz application
+3. **Select Practice or Exam mode** based on your study goals
+4. **Complete the quiz** and review results with detailed explanations
 
 ### Combining Question Banks
 
-To create a larger quiz combining multiple domains:
+To create larger practice exams combining multiple domains:
 
 ```bash
 # Example PowerShell script to combine question banks
 $questions = @()
-$questions += (Get-Content "az104-storage-questions.json" | ConvertFrom-Json).questions
-$questions += (Get-Content "az104-vm-questions.json" | ConvertFrom-Json).questions
-$questions += (Get-Content "az104-networking-questions.json" | ConvertFrom-Json).questions
+$questions += (Get-Content "certification/domain1-questions.json" | ConvertFrom-Json).questions
+$questions += (Get-Content "certification/domain2-questions.json" | ConvertFrom-Json).questions
+$questions += (Get-Content "certification/domain3-questions.json" | ConvertFrom-Json).questions
 
 $combinedQuiz = @{
-    title = "AZ-104 Combined Practice Exam"
+    title = "Combined Practice Exam"
     questions = $questions
 }
 
 $combinedQuiz | ConvertTo-Json -Depth 10 | Out-File "combined-practice-exam.json"
 ```
+
+## 🤖 Interactive Prompt Generation
+
+### Quick Start with AI Question Generation
+
+To quickly generate customized AI prompts for your certification:
+
+**Windows (PowerShell):**
+
+```powershell
+.\Generate-PromptTemplate.ps1
+```
+
+**Linux/macOS/WSL (Bash):**
+
+```bash
+./generate-prompt-template.sh
+```
+
+These interactive scripts will guide you through creating a customized AI prompt based on your specific certification needs. See `PROMPT-GENERATION.md` for detailed usage instructions.
 
 ## 📝 Question Format
 
@@ -112,54 +100,58 @@ Each question follows this structure:
 
 ## 📖 Study Tips
 
-### Exam Preparation Strategy
+### Effective Study Strategy
 
-1. **Start with domain-specific quizzes** to identify weak areas
-2. **Use Practice Mode** to learn from immediate feedback
-3. **Take full practice exams** in Exam Mode to simulate real conditions
-4. **Review incorrect answers** thoroughly with explanations and references
-5. **Focus on categories** where you score below 70%
+1. **Start with domain-specific quizzes** to identify knowledge gaps
+2. **Use Practice Mode** to learn from immediate feedback and explanations
+3. **Take full practice exams** in Exam Mode to simulate real testing conditions
+4. **Review incorrect answers** thoroughly with provided explanations and references
+5. **Focus on weak areas** where you score below 70%
+6. **Track progress** across multiple study sessions
 
-### Key Study Areas
+### General Study Best Practices
 
-- **Hands-on Practice**: Use Azure portal, CLI, and PowerShell
-- **Official Documentation**: Follow reference links in questions
-- **Practice Labs**: Complete exercises for each domain
-- **Community Resources**: Join Azure certification study groups
+- **Hands-on Practice**: Use the actual technology platform being tested
+- **Official Documentation**: Follow reference links provided in question explanations
+- **Practice Labs**: Complete hands-on exercises for each certification domain
+- **Study Groups**: Join certification-specific communities and forums
+- **Spaced Repetition**: Review questions multiple times over several weeks
 
-## 🎓 Certification Information
+## 🎓 Adding New Certifications
 
-- **Exam Code**: AZ-104
-- **Duration**: 120 minutes
-- **Passing Score**: 700 out of 1000 points
-- **Question Types**: Multiple choice, multiple response, drag-and-drop, case studies
-- **Prerequisites**: Basic understanding of Azure services
+To add support for a new certification:
 
-## 🔄 Updating Question Banks
+1. **Create a certification folder** with the exam code (e.g., `AWS-SAA/`, `GCP-ACE/`)
+2. **Follow the standard JSON format** for question files
+3. **Include detailed explanations** with official documentation references
+4. **Organize by exam domains** with appropriate weightings
+5. **Test questions** with the quiz application before publishing
 
-To add new questions:
+## 🔄 Creating Question Banks
 
-1. Follow the JSON format above
-2. Include detailed explanations
-3. Add relevant documentation references
-4. Categorize by exam domain
-5. Test with the quiz application
+To add new questions to any certification:
+
+1. **Follow the standard JSON format** shown below
+2. **Include comprehensive explanations** that teach concepts
+3. **Add relevant documentation references** from official sources
+4. **Categorize by exam domain** or technology area
+5. **Test with the quiz application** to ensure proper formatting
 
 ## 🤖 AI Question Generation Prompt
 
-Use this comprehensive prompt when generating new AZ-104 certification questions with AI tools:
+Use this comprehensive prompt template when generating new certification questions with AI tools:
 
-### Prompt Template
+### Universal Prompt Template
 
 ```text
-You are an expert Azure administrator and certification trainer creating high-quality AZ-104 practice questions. Generate [NUMBER] challenging questions for the [DOMAIN] domain of the AZ-104 certification exam.
+You are an expert [TECHNOLOGY] professional and certification trainer creating high-quality [CERTIFICATION_NAME] practice questions. Generate [NUMBER] challenging questions for the [DOMAIN] domain of the [CERTIFICATION_NAME] certification exam.
 
 **Requirements:**
-- Target the AZ-104 Azure Administrator Associate certification level
-- Focus on [SPECIFIC DOMAIN] which represents [PERCENTAGE]% of the exam
-- Create scenario-based questions that test practical application, not just memorization
-- Include real-world situations an Azure administrator would encounter
-- Ensure questions test deep understanding of Azure concepts and best practices
+- Target the [CERTIFICATION_NAME] certification level
+- Focus on [SPECIFIC_DOMAIN] which represents [PERCENTAGE]% of the exam
+- Create a mix of scenario-based questions that test practical application, and more straightforward questions that test knowledge
+- Include real-world situations a [ROLE_TITLE] would encounter
+- Ensure questions test deep understanding of [TECHNOLOGY] concepts and best practices
 
 **Question Format (JSON):**
 ```
@@ -169,8 +161,8 @@ You are an expert Azure administrator and certification trainer creating high-qu
   "question": "Detailed scenario-based question (2-4 sentences)",
   "correct_answer": "Precise, actionable correct answer",
   "wrong_answers": ["Plausible but incorrect option", "Another realistic distractor", "Common misconception", "Related but wrong approach"],
-  "explanation": "Comprehensive explanation (3-5 sentences) covering why the correct answer is right and why others are wrong. Include key concepts and best practices.",
-  "references": ["https://learn.microsoft.com/... (official Microsoft Learn URL)", "https://docs.microsoft.com/... (official documentation URL)"],
+  "explanation": "Comprehensive explanation (3-5 sentences) covering why the correct answer is right and why others are wrong. Include key concepts and best practices. Also include single sentence explanations of why the distractors were incorrect.",
+  "references": ["[OFFICIAL_DOCS_URL] (official documentation URL)", "[LEARNING_PLATFORM_URL] (official learning platform URL)"],
   "category": "[Domain Name]"
 }
 ```
@@ -178,86 +170,126 @@ You are an expert Azure administrator and certification trainer creating high-qu
 ```text
 **Content Guidelines:**
 
-- Use current Azure services and features (as of 2025)
-- Include specific Azure resource names, settings, and configurations
+- Use current [TECHNOLOGY] services and features (as of 2025)
+- Include specific [TECHNOLOGY] resource names, settings, and configurations
 - Test understanding of service limits, pricing tiers, and architectural decisions
 - Cover troubleshooting scenarios and performance optimization
 - Include security, compliance, and governance considerations
-- Reference real Azure portal workflows and PowerShell/CLI commands
+- Reference real platform workflows and CLI/API commands
 
 **Quality Standards:**
 
-- Questions should require 2-3 levels of Azure knowledge to answer correctly
-- Distractors should be realistic options an inexperienced admin might choose
-- Explanations must reference official Microsoft documentation
+- Questions should require 2-3 levels of [TECHNOLOGY] knowledge to answer correctly
+- Correct answers should vary in length and word choice
+- Distractors should be realistic options an inexperienced professional might choose
+- Distractors and correct answers should be of similar length
+- Explanations must reference official [VENDOR] documentation
 - Each question should teach something valuable beyond just testing knowledge
 - Avoid questions with obvious answers or trick questions
 
 **Domain-Specific Focus Areas:**
 
-**Identity and Governance (15-20%):**
+[EXAM_DOMAINS_PLACEHOLDER]
 
-- Azure AD user and group management, RBAC assignments
-- Conditional Access policies and MFA configuration
-- Azure Policy implementation and compliance monitoring
-- Privileged Identity Management and access reviews
-
-**Storage (15-20%):**
-
-- Storage account configuration and security features
-- Blob lifecycle management and access tiers
-- Azure Files integration and hybrid scenarios
-- Backup strategies and disaster recovery
-
-**Compute (20-25%):**
-
-- VM deployment, scaling, and availability options
-- Container services and App Service configurations
-- Automation scripts and configuration management
-- Performance monitoring and troubleshooting
-
-**Networking (25-30%):**
-
-- Virtual network design and subnet planning
-- Network security groups and application security groups
-- VPN Gateway and ExpressRoute configurations
-- Load balancer and Application Gateway scenarios
-
-**Monitoring and Backup (10-15%):**
-
-- Azure Monitor alerting and Log Analytics queries
-- Backup policies and recovery scenarios
-- Site Recovery planning and testing
-- Performance diagnostics and optimization
-
-Generate questions that an experienced Azure administrator would find challenging but fair, reflecting real-world scenarios they encounter in enterprise environments.
+Generate questions that an experienced [ROLE_TITLE] would find challenging but fair, reflecting real-world scenarios they encounter in enterprise environments.
 ```
 
-### Example Usage
+### Template Variables
 
-Replace placeholders with specific values:
+Replace these placeholders with certification-specific values:
 
-- `[NUMBER]`: 10, 15, 20, etc.
-- `[DOMAIN]`: "Identity and Governance", "Storage", etc.
-- `[SPECIFIC DOMAIN]`: More detailed focus area
-- `[PERCENTAGE]`: Exam weight percentage
+- **`[CERTIFICATION_NAME]`**: Full certification name (e.g., "AZ-104 Azure Administrator Associate")
+- **`[TECHNOLOGY]`**: Primary technology (e.g., "Azure", "AWS", "Kubernetes")
+- **`[VENDOR]`**: Technology vendor (e.g., "Microsoft", "Amazon", "Google")
+- **`[ROLE_TITLE]`**: Professional role (e.g., "Azure Administrator", "Solutions Architect")
+- **`[OFFICIAL_DOCS_URL]`**: Official documentation base URL
+- **`[LEARNING_PLATFORM_URL]`**: Official learning platform URL
+- **`[EXAM_DOMAINS_PLACEHOLDER]`**: Specific exam domains with percentages
+- **`[NUMBER]`**: Number of questions to generate (10, 15, 20, etc.)
+- **`[DOMAIN]`**: Specific domain name
+- **`[SPECIFIC_DOMAIN]`**: More detailed focus area
+- **`[PERCENTAGE]`**: Exam weight percentage
+
+### Example Certifications
+
+#### Microsoft Azure (AZ-104)
+
+- **Certification**: AZ-104 Azure Administrator Associate
+- **Technology**: Azure
+- **Vendor**: Microsoft
+- **Role**: Azure Administrator
+- **Official Docs**: <https://learn.microsoft.com/en-us/azure/>
+- **Learning Platform**: <https://learn.microsoft.com/>
+- **Exam Guide**: <https://learn.microsoft.com/en-us/certifications/exams/az-104>
+
+#### AWS (SAA-C03)
+
+- **Certification**: AWS Certified Solutions Architect Associate
+- **Technology**: AWS
+- **Vendor**: Amazon
+- **Role**: Solutions Architect
+- **Official Docs**: <https://docs.aws.amazon.com/>
+- **Learning Platform**: <https://aws.amazon.com/training/>
+- **Exam Guide**: <https://aws.amazon.com/certification/certified-solutions-architect-associate/>
+
+#### Google Cloud (ACE)
+
+- **Certification**: Google Cloud Associate Cloud Engineer
+- **Technology**: Google Cloud Platform
+- **Vendor**: Google
+- **Role**: Cloud Engineer
+- **Official Docs**: <https://cloud.google.com/docs>
+- **Learning Platform**: <https://cloud.google.com/training/>
+- **Exam Guide**: <https://cloud.google.com/certification/cloud-engineer>
+
+#### Kubernetes (CKA)
+
+- **Certification**: Certified Kubernetes Administrator
+- **Technology**: Kubernetes
+- **Vendor**: Cloud Native Computing Foundation
+- **Role**: Kubernetes Administrator
+- **Official Docs**: <https://kubernetes.io/docs/>
+- **Learning Platform**: <https://training.linuxfoundation.org/>
+- **Exam Guide**: <https://www.cncf.io/certification/cka/>
 
 ### Quality Validation
 
-Before adding generated questions:
+Before adding generated questions to any certification:
 
-1. Verify all reference URLs are valid and current
-2. Test questions with the quiz application
-3. Ensure explanations are comprehensive and educational
-4. Confirm difficulty level matches AZ-104 Associate level
-5. Review for technical accuracy and current Azure features
+1. **Verify all reference URLs** are valid and current
+2. **Test questions** with the quiz application for proper formatting
+3. **Ensure explanations** are comprehensive and educational
+4. **Confirm difficulty level** matches the certification level
+5. **Review for technical accuracy** and current technology features
 
-## 📚 Additional Resources
+## 📚 Contributing
 
-- [Microsoft Learn AZ-104 Path](https://docs.microsoft.com/en-us/learn/certifications/exams/az-104)
-- [Azure Documentation](https://docs.microsoft.com/en-us/azure/)
-- [AZ-104 Exam Skills Outline](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4pCWy)
-- [Azure CLI Reference](https://docs.microsoft.com/en-us/cli/azure/)
-- [Azure PowerShell Reference](https://docs.microsoft.com/en-us/powershell/azure/)
+We welcome contributions for new certifications and question improvements:
 
-Good luck with your AZ-104 certification journey! 🎉
+1. **Fork the repository** and create a feature branch
+2. **Add new certification folders** following the established structure
+3. **Include comprehensive question banks** with proper explanations
+4. **Test thoroughly** with the quiz application
+5. **Submit a pull request** with detailed documentation
+
+### Supported Technologies
+
+The quiz grader is designed to support any technology certification including:
+
+- **Cloud Platforms**: Azure, AWS, Google Cloud, Oracle Cloud
+- **Container Technologies**: Kubernetes, Docker, OpenShift
+- **DevOps Tools**: Jenkins, GitLab, Terraform, Ansible
+- **Programming Languages**: Java, Python, JavaScript, C#
+- **Databases**: SQL Server, MySQL, PostgreSQL, MongoDB
+- **Security**: CISSP, CEH, Security+, CISM
+- **Project Management**: PMP, Scrum Master, ITIL
+
+## 🎉 Get Started
+
+1. **Clone the repository**
+2. **Navigate to a certification folder** (e.g., AZ-104/)
+3. **Open index.html** in your web browser
+4. **Load a question bank file** and start practicing
+5. **Track your progress** and focus on weak areas
+
+Good luck with your certification journey! 🚀
