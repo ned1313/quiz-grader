@@ -140,11 +140,13 @@ You are an expert $technology professional and certification trainer creating hi
 **Content Guidelines:**
 
 - Use current $technology services and features (as of 2025)
+- Reference official $vendor documentation and learning resources from the URLs provided
 - Include specific $technology resource names, settings, and configurations
 - Test understanding of service limits, pricing tiers, and architectural decisions
 - Cover troubleshooting scenarios and performance optimization
 - Include security, compliance, and governance considerations
 - Reference real platform workflows and CLI/API commands
+- Use MCP servers or equivalent terminology where applicable to access resources
 
 **Quality Standards:**
 
@@ -175,7 +177,8 @@ Write-Host ""
 $saveToFile = Read-Host "Would you like to save this prompt to a file? (y/N)"
 if ($saveToFile -eq 'y' -or $saveToFile -eq 'Y') {
     $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
-    $filename = "ai-prompt-$($technology.ToLower())-$($specificDomain -replace ' ','-' -replace '[^a-zA-Z0-9-]','').ToLower()-$timestamp.txt"
+    $domainClean = ($specificDomain -replace ' ','-' -replace '[^a-zA-Z0-9-]','').ToLower()
+    $filename = "ai-prompt-$($technology.ToLower())-$domainClean-$timestamp.txt"
     
     # Create prompts directory if it doesn't exist
     $promptsDir = "prompts"

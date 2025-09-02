@@ -157,11 +157,13 @@ prompt_template="You are an expert $technology professional and certification tr
 **Content Guidelines:**
 
 - Use current $technology services and features (as of 2025)
+- Reference official $vendor documentation and learning resources from the URLs provided
 - Include specific $technology resource names, settings, and configurations
 - Test understanding of service limits, pricing tiers, and architectural decisions
 - Cover troubleshooting scenarios and performance optimization
 - Include security, compliance, and governance considerations
 - Reference real platform workflows and CLI/API commands
+- Use MCP servers or equivalent terminology where applicable to access resources
 
 **Quality Standards:**
 
