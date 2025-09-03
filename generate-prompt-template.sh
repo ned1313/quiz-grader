@@ -140,6 +140,8 @@ prompt_template="You are an expert $technology professional and certification tr
 - Create a mix of scenario-based questions that test practical application, and more straightforward questions that test knowledge
 - Include real-world situations a $role_title would encounter
 - Ensure questions test deep understanding of $technology concepts and best practices
+- Save the file using the naming convention: $technology-$specific_domain-YYYYMMDD.json
+- Save the generated JSON file to the certification folder for $certification_name
 
 **Question Format (JSON):**
 
@@ -178,6 +180,21 @@ prompt_template="You are an expert $technology professional and certification tr
 **Domain-Specific Focus Areas:**
 
 $(echo -e "$exam_domains")
+
+**IMPORTANT - Post-Generation Validation:**
+
+After generating the JSON, it's critical to validate the output before use:
+1. Save the generated JSON to a file with a descriptive name
+2. Run validation using: ./validate-quiz-json.sh "your-file.json"
+3. Fix any errors or warnings reported by the validation script
+4. Re-validate until the script reports "VALIDATION PASSED"
+
+The validation script checks for:
+- JSON syntax correctness
+- Required field presence and proper data types
+- Answer uniqueness and quality
+- Content structure and formatting
+- Common issues like field naming errors
 
 Generate questions that an experienced $role_title would find challenging but fair, reflecting real-world scenarios they encounter in enterprise environments."
 
@@ -220,6 +237,26 @@ echo -e "${YELLOW}1. Copy the generated prompt above${NC}"
 echo -e "${YELLOW}2. Paste it into your preferred AI tool (ChatGPT, Claude, etc.)${NC}"
 echo -e "${YELLOW}3. The AI will generate questions in the correct JSON format${NC}"
 echo -e "${YELLOW}4. Save the output as a .json file in your certification folder${NC}"
-echo -e "${YELLOW}5. Test the questions with the quiz application${NC}"
+echo -e "${RED}5. VALIDATE the JSON before using it: ./validate-quiz-json.sh 'your-file.json'${NC}"
+echo -e "${YELLOW}6. Fix any validation errors or warnings reported by the script${NC}"
+echo -e "${YELLOW}7. Test the questions with the quiz application${NC}"
+echo ""
+echo -e "${RED}╔══════════════════════════════════════════════════════════════════════╗${NC}"
+echo -e "${RED}║                        Validation Important!                        ║${NC}"
+echo -e "${RED}╚══════════════════════════════════════════════════════════════════════╝${NC}"
+echo ""
+echo -e "${RED}⚠️  ALWAYS validate your generated JSON files before deployment!${NC}"
+echo ""
+echo -e "${WHITE}Validation script usage:${NC}"
+echo -e "${CYAN}  ./validate-quiz-json.sh 'path/to/your/questions.json'${NC}"
+echo -e "${CYAN}  ./validate-quiz-json.sh 'questions.json' --verbose${NC}"
+echo -e "${CYAN}  ./validate-quiz-json.sh 'questions.json' --auto-fix${NC}"
+echo ""
+echo -e "${WHITE}The validation script will:${NC}"
+echo -e "${GRAY}  • Check JSON syntax and structure${NC}"
+echo -e "${GRAY}  • Validate required fields and data types${NC}"
+echo -e "${GRAY}  • Check for content quality issues${NC}"
+echo -e "${GRAY}  • Detect duplicate answers${NC}"
+echo -e "${GRAY}  • Auto-fix common problems (with --auto-fix)${NC}"
 echo ""
 echo -e "${GREEN}Happy studying! 🚀${NC}"

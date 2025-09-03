@@ -1,0 +1,139 @@
+You are an expert Consul professional and certification trainer creating high-quality HashiCorp Consul Associate practice questions. Generate 20 challenging questions for the Understand the pillars of service networking domain of the HashiCorp Consul Associate certification exam.
+
+**Requirements:**
+- Target the HashiCorp Consul Associate certification level (beginner to intermediate concepts)
+- Focus on Understand the pillars of service networking topic
+- Create primarily syntax, configuration, and functionality-focused questions (70%) with minimal scenario-based questions (30%)
+- Emphasize basic to intermediate CLI commands, simple API calls, and fundamental configuration syntax
+- Test core Consul features, common parameters, and standard command usage
+- Focus on foundational concepts and practical implementation skills suitable for beginners
+- Avoid advanced troubleshooting, complex networking scenarios, or expert-level configurations
+- Save the file using the naming convention: Consul-Associate-YYYYMMDD.json
+- Save the generated JSON file to the certification folder Consul-Associate
+
+**Question Format (JSON):**
+
+`json
+{
+  "question": "Direct technical question focusing on syntax, commands, configurations, or specific functionality (1-3 sentences)",
+  "correct_answer": "Precise, technically accurate answer with exact syntax or configuration",
+  "wrong_answers": ["Syntactically similar but incorrect option", "Valid syntax but wrong context/usage", "Common syntax error or misconception", "Related command/config but incorrect application"],
+  "explanation": "Technical explanation (3-5 sentences) covering the correct syntax/functionality and why alternatives are incorrect. Include exact command syntax, configuration parameters, and technical details. Explain why each distractor represents a common mistake.",
+  "references": ["https://developer.hashicorp.com/consul/docs (official documentation URL)", "https://developer.hashicorp.com/consul/tutorials (official learning platform URL)"],
+  "category": "Understand the pillars of service networking"
+}
+`
+
+**Content Guidelines:**
+
+- Focus on basic CLI command syntax and common usage patterns
+- Test fundamental Consul parameters, standard flags, and basic configuration options
+- Include straightforward command-line examples with clear, expected outcomes
+- Test knowledge of basic service registration syntax and simple health check configurations
+- Cover common API endpoints using standard HTTP methods (GET, PUT, POST)
+- Include basic configuration file syntax for HCL and JSON formats
+- Test understanding of default port numbers, standard protocols, and basic networking concepts
+- Reference essential Consul binary commands and commonly used subcommands
+- Include basic error messages and their common causes
+- Test knowledge of standard file paths, basic environment variables, and minimum system requirements
+- Focus on concepts suitable for someone new to Consul or with 1-2 years of experience
+- Avoid complex multi-datacenter setups, advanced security configurations, or performance tuning
+
+**Quality Standards:**
+
+- Questions should test foundational technical knowledge appropriate for beginners to intermediate users
+- Focus on standard command syntax, basic configuration parameters, and common API usage
+- Correct answers should include clear technical details and straightforward syntax
+- Distractors should be common beginner mistakes, similar-looking commands, or basic configuration errors
+- Distractors should test typical misconceptions that new users might have
+- Explanations must include clear syntax examples and fundamental implementation concepts
+- Each question should teach essential skills needed for basic Consul implementation
+- Focus on practical, everyday knowledge rather than edge cases or advanced scenarios
+- Ensure questions are appropriate for someone studying for their first Consul certification
+
+**Domain-Specific Focus Areas:**
+
+- Understand the pillars of service networking
+- Describe Consul architecture
+- Deploy a single datacenter
+- Register services and use service discovery
+- Use Consul service mesh
+- Secure agent communication
+- Secure services with basic access control lists (ACLs)
+- Secure and connect service mesh applications
+- Monitor Consul
+- Operate and maintain Consul
+
+The full list of topics and subtopics can be found here: https://developer.hashicorp.com/consul/tutorials/certification-003/associate-review-003 and is as follows:
+
+1	Understand the pillars of service networking
+1a	Understand how Consul discovers, tracks, and monitors the health of services
+1b	Explain how Consul secures service to service communication	
+1c	Summarize how Consul controls access to services at point of entry
+1d	Discuss how Consul automates networking tasks
+		
+2	Describe Consul architecture
+2a	Identify Consul datacenter components including agents and communication protocols options
+2b	Review Consul server high availability & scalability options
+2c	Differentiate between server agents and data plane components (client agents and Consul Dataplane)
+2d	Understand that Consul can run on multiple platforms
+	
+3	Deploy a single datacenter
+3a	Configure, bootstrap, and start Consul server agents
+3b	Configure and start Consul client agents
+3c	Configure and start Consul on Kubernetes
+3d	Explain Consul agent join methods and behavior
+	
+4	Register services and use service discovery
+4a	Interpret a service registration
+4b	Differentiate between service registration methods
+4c	Understand service health check configuration options and behaviors
+4d	Query Consul's service catalog via CLI, API, UI, and/or DNS, and interpret the results
+4e	Interpret & use prepared queries
+
+5	Use Consul service mesh
+5a	Consider high level architecture & key benefits of Consul service mesh
+5b	Understand Consul service mesh intentions & when to use them
+5c	Apply proxy configuration options within Consul service mesh
+	
+6	Secure agent communication
+6a	Understand Consul security/threat model
+6b	Differentiate certificate types needed for TLS encryption
+6c	Interpret TLS encryption settings & intended use
+6d	Configure gossip encryption
+	
+7	Secure services with basic access control lists (ACLs)
+7a	Understand Consul ACL system components and usage
+7b	Create and configure ACL policies and tokens
+7c	Use ACL tokens to communicate securely with Consul services and agents
+	
+8	Secure and connect service mesh applications
+8a	Use Consul gateways to securely connect and access services into, out of, and within the service mesh
+8b	Understand how to enable communication between multiple Consul datacenters
+
+9	Monitor Consul
+9a	Describe Consul service mesh observability
+9b	Review Consul datacenter observability	
+	
+10	Operate and maintain Consul
+10a	Manage Consul servers
+10b	Maintain Consul communications security
+10c	Backup and restore Consul cluster state
+10d	Understand Consul datacenter troubleshooting options
+
+**IMPORTANT - Post-Generation Validation:**
+
+After generating the JSON, it's critical to validate the output before use:
+1. Save the generated JSON to a file with a descriptive name
+2. Run validation using: .\Validate-QuizJSON.ps1 -FilePath "your-file.json"
+3. Fix any errors or warnings reported by the validation script
+4. Re-validate until the script reports "VALIDATION PASSED"
+
+The validation script checks for:
+- JSON syntax correctness
+- Required field presence and proper data types
+- Answer uniqueness and quality
+- Content structure and formatting
+- Common issues like field naming errors
+
+Generate questions that test specific technical implementation skills, command syntax, and configuration knowledge that a Cloud Engineer needs to successfully deploy and manage Consul in production environments. Prioritize syntax accuracy and functional understanding over abstract scenarios.

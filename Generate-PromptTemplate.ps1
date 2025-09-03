@@ -123,6 +123,8 @@ You are an expert $technology professional and certification trainer creating hi
 - Create a mix of scenario-based questions that test practical application, and more straightforward questions that test knowledge
 - Include real-world situations a $roleTitle would encounter
 - Ensure questions test deep understanding of $technology concepts and best practices
+- Save the file using the naming convention: $technology-$specific_domain-YYYYMMDD.json
+- Save the generated JSON file to the certification folder for $certification_name
 
 **Question Format (JSON):**
 
@@ -161,6 +163,21 @@ You are an expert $technology professional and certification trainer creating hi
 **Domain-Specific Focus Areas:**
 
 $examDomains
+
+**IMPORTANT - Post-Generation Validation:**
+
+After generating the JSON, it's critical to validate the output before use:
+1. Save the generated JSON to a file with a descriptive name
+2. Run validation using: .\Validate-QuizJSON.ps1 -FilePath "your-file.json"
+3. Fix any errors or warnings reported by the validation script
+4. Re-validate until the script reports "VALIDATION PASSED"
+
+The validation script checks for:
+- JSON syntax correctness
+- Required field presence and proper data types
+- Answer uniqueness and quality
+- Content structure and formatting
+- Common issues like field naming errors
 
 Generate questions that an experienced $roleTitle would find challenging but fair, reflecting real-world scenarios they encounter in enterprise environments.
 "@
@@ -202,6 +219,26 @@ Write-Host "1. Copy the generated prompt above" -ForegroundColor Yellow
 Write-Host "2. Paste it into your preferred AI tool (ChatGPT, Claude, etc.)" -ForegroundColor Yellow
 Write-Host "3. The AI will generate questions in the correct JSON format" -ForegroundColor Yellow
 Write-Host "4. Save the output as a .json file in your certification folder" -ForegroundColor Yellow
-Write-Host "5. Test the questions with the quiz application" -ForegroundColor Yellow
+Write-Host "5. VALIDATE the JSON before using it: .\Validate-QuizJSON.ps1 -FilePath 'your-file.json'" -ForegroundColor Red
+Write-Host "6. Fix any validation errors or warnings reported by the script" -ForegroundColor Yellow
+Write-Host "7. Test the questions with the quiz application" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "╔══════════════════════════════════════════════════════════════════════╗" -ForegroundColor Red
+Write-Host "║                        Validation Important!                        ║" -ForegroundColor Red
+Write-Host "╚══════════════════════════════════════════════════════════════════════╝" -ForegroundColor Red
+Write-Host ""
+Write-Host "⚠️  ALWAYS validate your generated JSON files before deployment!" -ForegroundColor Red
+Write-Host ""
+Write-Host "Validation script usage:" -ForegroundColor White
+Write-Host "  .\Validate-QuizJSON.ps1 -FilePath 'path\to\your\questions.json'" -ForegroundColor Cyan
+Write-Host "  .\Validate-QuizJSON.ps1 -FilePath 'questions.json' -VerboseOutput" -ForegroundColor Cyan
+Write-Host "  .\Validate-QuizJSON.ps1 -FilePath 'questions.json' -AutoFix" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "The validation script will:" -ForegroundColor White
+Write-Host "  • Check JSON syntax and structure" -ForegroundColor Gray
+Write-Host "  • Validate required fields and data types" -ForegroundColor Gray
+Write-Host "  • Check for content quality issues" -ForegroundColor Gray
+Write-Host "  • Detect duplicate answers" -ForegroundColor Gray
+Write-Host "  • Auto-fix common problems (with -AutoFix)" -ForegroundColor Gray
 Write-Host ""
 Write-Host "Happy studying! 🚀" -ForegroundColor Green
