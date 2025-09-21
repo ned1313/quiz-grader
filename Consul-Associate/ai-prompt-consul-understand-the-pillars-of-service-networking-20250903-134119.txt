@@ -1,8 +1,10 @@
-You are an expert Consul professional and certification trainer creating high-quality HashiCorp Consul Associate practice questions. Generate 20 challenging questions for the Understand the pillars of service networking domain of the HashiCorp Consul Associate certification exam.
+You are an expert Consul professional and certification trainer creating high-quality HashiCorp Consul Associate practice questions.
+Generate 20 challenging questions for the "Use Consul service mesh" topic of the HashiCorp Consul Associate certification exam.
 
 **Requirements:**
 - Target the HashiCorp Consul Associate certification level (beginner to intermediate concepts)
-- Focus on Understand the pillars of service networking topic
+- Focus on the topic: Use Consul service mesh
+- Use the subtopics outlined below for the primary topic
 - Create primarily syntax, configuration, and functionality-focused questions (70%) with minimal scenario-based questions (30%)
 - Emphasize basic to intermediate CLI commands, simple API calls, and fundamental configuration syntax
 - Test core Consul features, common parameters, and standard command usage
@@ -10,17 +12,22 @@ You are an expert Consul professional and certification trainer creating high-qu
 - Avoid advanced troubleshooting, complex networking scenarios, or expert-level configurations
 - Save the file using the naming convention: Consul-Associate-YYYYMMDD.json
 - Save the generated JSON file to the certification folder Consul-Associate
+- Use the Validate-QuizJSON.ps1 script to ensure the JSON is valid and meets quality standards
+- Verify all links in references are working
 
 **Question Format (JSON):**
 
 `json
 {
-  "question": "Direct technical question focusing on syntax, commands, configurations, or specific functionality (1-3 sentences)",
+  "title": "Consul Associate - Topic of Questions",
+  "questions": [
+  { "question": "Direct technical question focusing on syntax, commands, configurations, or specific functionality (1-3 sentences)",
   "correct_answer": "Precise, technically accurate answer with exact syntax or configuration",
   "wrong_answers": ["Syntactically similar but incorrect option", "Valid syntax but wrong context/usage", "Common syntax error or misconception", "Related command/config but incorrect application"],
   "explanation": "Technical explanation (3-5 sentences) covering the correct syntax/functionality and why alternatives are incorrect. Include exact command syntax, configuration parameters, and technical details. Explain why each distractor represents a common mistake.",
   "references": ["https://developer.hashicorp.com/consul/docs (official documentation URL)", "https://developer.hashicorp.com/consul/tutorials (official learning platform URL)"],
-  "category": "Understand the pillars of service networking"
+  "category": "Understand the pillars of service networking" }
+  ]
 }
 `
 
@@ -38,6 +45,7 @@ You are an expert Consul professional and certification trainer creating high-qu
 - Test knowledge of standard file paths, basic environment variables, and minimum system requirements
 - Focus on concepts suitable for someone new to Consul or with 1-2 years of experience
 - Avoid complex multi-datacenter setups, advanced security configurations, or performance tuning
+- Use content found on the official HashiCorp Consul documentation (https://developer.hashicorp.com/consul/docs) and learning platforms (https://developer.hashicorp.com/consul/tutorials)
 
 **Quality Standards:**
 
