@@ -1,8 +1,8 @@
-You are an expert Consul professional and certification trainer creating high-quality HashiCorp Consul Associate practice questions. Generate 20 challenging questions for the Understand the pillars of service networking domain of the HashiCorp Consul Associate certification exam.
+You are an expert Consul professional and certification trainer creating high-quality HashiCorp Consul Associate practice questions. Generate 20 challenging questions for the Deploy a single datacenter domain of the HashiCorp Consul Associate certification exam.
 
 **Requirements:**
 - Target the HashiCorp Consul Associate certification level (beginner to intermediate concepts)
-- Focus on Understand the pillars of service networking topic
+- Focus on Deploy a single datacenter topic
 - Create primarily syntax, configuration, and functionality-focused questions (70%) with minimal scenario-based questions (30%)
 - Emphasize basic to intermediate CLI commands, simple API calls, and fundamental configuration syntax
 - Test core Consul features, common parameters, and standard command usage
@@ -38,6 +38,7 @@ You are an expert Consul professional and certification trainer creating high-qu
 - Test knowledge of standard file paths, basic environment variables, and minimum system requirements
 - Focus on concepts suitable for someone new to Consul or with 1-2 years of experience
 - Avoid complex multi-datacenter setups, advanced security configurations, or performance tuning
+- Use materials found in the official HashiCorp Consul documentation and learning platform at https://developer.hashicorp.com/consul/docs and https://developer.hashicorp.com/consul/tutorials
 
 **Quality Standards:**
 

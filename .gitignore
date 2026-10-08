@@ -55,3 +55,7 @@ node_modules/
 
 # AI-generated prompt files (optional - remove if you want to track them)
 prompts/
+
+# Terraform tfvars files
+*.tfvars
+*.tfvars.json
