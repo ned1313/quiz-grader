@@ -1,0 +1,117 @@
+You are an expert Azure professional and certification trainer creating high-quality Microsoft Certified: Cloud and AI Security Engineer Associate practice questions. Generate 100 challenging questions for certification exam preparation.
+
+**Requirements:**
+- Target the Microsoft Certified: Cloud and AI Security Engineer Associate certification level (SC-500)
+- Generate original, single-answer practice questions, not actual or recalled exam questions
+- Create a mix of scenario-based questions that test practical application, and more straightforward questions that test knowledge
+- Include real-world situations a Security Engineer would encounter
+- Ensure questions test deep understanding of security concepts and best practices
+- Save the file using the naming convention: Azure-SC-500-YYYYMMDD.json
+- Use the actual generation date and save the file in the SC-500 certification folder
+- If the target file already exists, ask before overwriting it or selecting an alternative filename
+- Review existing SC-500 banks when available; avoid repeating questions or merely changing names in existing scenarios
+
+**Research Before Generation:**
+
+- Inspect the repository's sample quiz and Validate-QuizJSON.ps1 to confirm the required schema and available validation checks
+- Read the current official study guide: https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/sc-500
+- Verify the current certification name, domain ranges, and objectives rather than assuming an older exam outline is still accurate
+- Use Microsoft Learn MCP search and full-page retrieval, or equivalent official-documentation tools, to verify behavior before drafting questions
+- Retrieve full documentation when search snippets do not establish prerequisites, limitations, licensing, enforcement behavior, or troubleshooting details
+- Check volatile details such as preview status, service names, pricing tiers, supported regions, licensing, and service limits against current documentation
+- If a material fact cannot be verified, omit that claim or replace the scenario; do not invent product behavior or documentation URLs
+- Record the generation date, source consultation date, coverage allocation, and relevant availability caveats in the quiz description
+
+**File Format (JSON):**
+
+Use a top-level object with title and questions, not a bare array or a standalone question. Include description, difficulty, question_count, and created metadata. The following illustrates one question object; the completed questions array must contain exactly 100 objects, matching question_count. Replace all instructional placeholders with actual content.
+
+```json
+{
+  "title": "SC-500 Cloud and AI Security Engineer Associate - Practice Questions",
+  "description": "Describe the bank, documentation consultation date, domain allocation, original-practice status, and availability caveats.",
+  "difficulty": "Advanced",
+  "question_count": 100,
+  "created": "YYYY-MM-DD",
+  "questions": [
+    {
+      "question": "Describe a concrete scenario and its constraints. Ask one clearly bounded question?",
+      "correct_answer": "Precise, actionable correct answer",
+      "wrong_answers": [
+        "Plausible but incorrect option",
+        "Another realistic distractor",
+        "Common misconception",
+        "Related but wrong approach"
+      ],
+      "explanation": "Explain the correct answer using the cited Microsoft Learn documentation. Explain why the first distractor fails. Explain why the second distractor fails. Explain why the third distractor fails. Explain why the fourth distractor fails.",
+      "references": ["https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/sc-500"],
+      "category": "Manage identity, access, and governance"
+    }
+  ]
+}
+```
+
+Each actual question must have all six question fields shown above. Use plain HTTPS URLs in references without appended titles or parenthetical notes, and include topic-specific official documentation rather than relying only on the study guide. Save strict JSON without Markdown fences, comments, or trailing commas.
+
+**Content Guidelines:**
+
+- Use current Azure and Microsoft security services as of the generation date
+- Ground each correct answer and its explanation in the referenced official documentation
+- Include specific Azure resource names, settings, and configurations
+- Test documented service limits, pricing-tier capabilities, licensing prerequisites, and architectural decisions; avoid unsupported fixed price claims
+- Cover troubleshooting scenarios and performance optimization
+- Include security, compliance, and governance considerations
+- Include verified platform workflows and CLI/API operations with the relevant scope, identity, or parameters; do not execute cloud changes to illustrate a question
+- Include AI security within the relevant domains, using the current guide's objectives rather than treating SC-500 as only traditional Azure infrastructure security
+- Where currently in scope, cover agent identity and access, MCP tool permissions, Foundry guardrails, Copilot data exposure, Purview DSPM, Defender AI protection, and Security Copilot
+- Distinguish authorization from network reachability, management plane from data plane, posture assessment from runtime protection, and auditing from blocking
+- State the necessary assumptions explicitly, including applicable plan, permission model, network path, and enabled prerequisites
+- Label preview-dependent scenarios explicitly and specify a supported, appropriately licensed pilot; do not imply universal general availability
+
+**Quality Standards:**
+
+- Questions should require 2-3 levels of Azure knowledge to answer correctly
+- Write each question in 2-4 sentences, with exactly one defensible correct answer under the stated constraints
+- Supply exactly four nonempty, distinct wrong answers, none equivalent to the correct answer
+- Use plausible neighboring configurations, permission scopes, plans, or workflows as distractors; avoid unrelated services, absurd actions, or easy wording clues
+- Keep all five answers comparable in specificity, grammar, and length; flag any question whose longest answer exceeds twice the shortest answer's character count for review
+- Vary correct-answer length and wording across the bank; do not systematically make it the longest or most qualified option
+- Write exactly five explanation sentences: one substantive correct-answer rationale grounded in the cited Microsoft Learn documentation, followed by one sentence for each distractor in array order
+- Explain why each distractor fails this scenario, not just that it is incorrect; teach the underlying boundary or tradeoff
+- Each question should teach something valuable beyond just testing knowledge
+- Avoid questions with obvious answers or trick questions
+- Review for ambiguous alternatives, repeated concepts presented as near-identical questions, unsupported absolutes, and answer-length cues before finalizing
+
+**Domain-Specific Focus Areas:**
+
+- Manage identity, access, and governance - relative weight 22
+- Secure storage, databases, and networking - relative weight 27
+- Secure compute - relative weight 22
+- Manage and monitor security posture - relative weight 22
+
+These weights total 93, not 100. Normalize them proportionally to the requested question count using largest-remainder rounding, resolving ties in listed domain order. For 100 questions, use 24/29/24/23 questions respectively. Use the exact domain names above as category values and document the allocation in description. Verify that it still fits the current official study-guide ranges; flag a changed outline or incompatible allocation before proceeding rather than silently changing coverage.
+
+Distribute questions across the current subobjectives within each domain, including both foundational knowledge and applied troubleshooting. Do not add a fifth AI domain unless the official outline changes.
+
+**Generation and Validation Workflow:**
+
+1. Establish the source references and coverage allocation before drafting; plan distinct learning objectives for all 100 questions.
+2. Generate in domain-sized batches while keeping the saved file valid JSON. Run the repository validator immediately after each batch and repair errors or warnings before continuing.
+3. From the repository root, run: .\Validate-QuizJSON.ps1 -FilePath ".\SC-500\Azure-SC-500-YYYYMMDD.json" (substitute the actual filename).
+4. On the completed bank, run additional structured checks using a JSON parser because the repository validator does not enforce every requirement:
+   - Exactly 100 question objects, with question_count matching the actual array length
+   - Exact category names and the planned 24/29/24/23 distribution
+   - All six question fields present with correct types; exactly four nonempty string distractors per question
+   - No duplicate question text within the bank, and no duplicate or equivalent answers within a question
+   - 2-4 sentences per question and exactly five sentences per explanation, allowing for identifiers and abbreviations when checking punctuation
+   - Nonempty references arrays containing official Microsoft documentation URLs and explanations supported by those sources
+   - Comparable answer lengths, with length-ratio outliers reviewed and corrected without padding
+   - No instructional placeholders or incomplete batches in the final file
+5. Review semantic quality separately: code checks cannot prove factual correctness, unique best-answer status, distractor plausibility, or that a new bank avoids paraphrasing earlier banks.
+6. Check every unique reference URL for successful resolution. Use HEAD requests where supported, fall back to GET when needed, and follow redirects to confirm the destination still documents the relevant feature. An HTTP 200 alone does not prove the reference supports the answer.
+7. Repair broken or irrelevant links, recheck them, and rerun the validator after any final edits. Require "VALIDATION PASSED" with zero errors and zero warnings; do not alter the validator to hide failures.
+8. Summarize the saved file path, actual question count, domain distribution, validation results, and any verification limitations. Do not claim checks passed without observing their results.
+
+When running multiline PowerShell checks through the editor's terminal tools, wrap them in a single & { ... } script block and confirm the complete output was returned. Keep temporary checking scripts out of the repository unless they are needed as reusable project tooling.
+
+Generate questions that an experienced Security Engineer would find challenging but fair, reflecting real-world scenarios they encounter in enterprise environments.

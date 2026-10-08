@@ -20,6 +20,24 @@ class QuizGrader {
         return ref;
     }
 
+    escapeHtml(unsafe) {
+        return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    unescapeHtml(safe) {
+        return safe
+            .replace(/&#039;/g, "'")
+            .replace(/&quot;/g, '"')
+            .replace(/&gt;/g, ">")
+            .replace(/&lt;/g, "<")
+            .replace(/&amp;/g, "&");
+    }
+
     bindEvents() {
         document.getElementById('quiz-file').addEventListener('change', this.handleFileUpload.bind(this));
         document.getElementById('practice-mode').addEventListener('click', () => this.startQuiz('practice'));
@@ -340,8 +358,8 @@ class QuizGrader {
             <div class="space-y-2">
                 ${question.shuffledAnswers.map((answer, answerIndex) => `
                     <label class="answer-option flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer">
-                        <input type="radio" name="question-${index}" value="${answer}" class="mr-3 text-blue-600">
-                        <span class="text-gray-700">${answer}</span>
+                        <input type="radio" name="question-${index}" value="${this.escapeHtml(answer)}" class="mr-3 text-blue-600">
+                        <span class="text-gray-700">${this.escapeHtml(answer)}</span>
                     </label>
                 `).join('')}
             </div>
@@ -363,7 +381,7 @@ class QuizGrader {
             const radioButtons = questionDiv.querySelectorAll('input[type="radio"]');
             radioButtons.forEach(radio => {
                 radio.addEventListener('change', () => {
-                    this.userAnswers[index] = radio.value;
+                    this.userAnswers[index] = this.unescapeHtml(radio.value);
                 });
             });
         }
@@ -372,9 +390,11 @@ class QuizGrader {
     }
 
     handleAnswerSelection(questionIndex, selectedAnswer) {
-        this.userAnswers[questionIndex] = selectedAnswer;
+        // Unescape the HTML entities in the selected answer for proper comparison
+        const unescapedAnswer = this.unescapeHtml(selectedAnswer);
+        this.userAnswers[questionIndex] = unescapedAnswer;
         const question = this.shuffledQuestions[questionIndex];
-        const isCorrect = selectedAnswer === question.correct_answer;
+        const isCorrect = unescapedAnswer === question.correct_answer;
         
         this.showImmediateFeedback(questionIndex, isCorrect, question);
     }
@@ -383,9 +403,10 @@ class QuizGrader {
         const feedbackDiv = document.getElementById(`feedback-${questionIndex}`);
         const questionDiv = document.getElementById(`question-${questionIndex}`);
         
-        // Highlight the selected answer
-        const selectedRadio = questionDiv.querySelector(`input[value="${this.userAnswers[questionIndex]}"]`);
-        const selectedLabel = selectedRadio.closest('label');
+        // Highlight the selected answer (need to escape the answer to match HTML value attribute)
+        const escapedUserAnswer = this.escapeHtml(this.userAnswers[questionIndex]);
+        const selectedRadio = questionDiv.querySelector(`input[value="${escapedUserAnswer}"]`);
+        const selectedLabel = selectedRadio ? selectedRadio.closest('label') : null;
         
         // Remove previous styling
         questionDiv.querySelectorAll('.answer-option').forEach(label => {
@@ -395,13 +416,14 @@ class QuizGrader {
         // Add correct styling
         questionDiv.querySelectorAll('.answer-option').forEach(label => {
             const radio = label.querySelector('input');
-            if (radio.value === question.correct_answer) {
+            const unescapedValue = this.unescapeHtml(radio.value);
+            if (unescapedValue === question.correct_answer) {
                 label.classList.add('correct-answer');
             }
         });
         
         // Add selected answer styling if incorrect
-        if (!isCorrect) {
+        if (!isCorrect && selectedLabel) {
             selectedLabel.classList.add('incorrect-answer');
         }
         
@@ -413,7 +435,7 @@ class QuizGrader {
                         ${isCorrect ? '✓ Correct!' : '✗ Incorrect'}
                     </span>
                 </div>
-                ${!isCorrect ? `<p class="text-gray-700 mb-2"><strong>Correct answer:</strong> ${question.correct_answer}</p>` : ''}
+                ${!isCorrect ? `<p class="text-gray-700 mb-2"><strong>Correct answer:</strong> ${this.escapeHtml(question.correct_answer)}</p>` : ''}
                 ${question.explanation ? `<p class="text-gray-700 mb-2"><strong>Explanation:</strong> ${question.explanation}</p>` : ''}
                 ${question.references && question.references.length > 0 ? `
                     <div class="text-gray-700">
@@ -573,7 +595,7 @@ class QuizGrader {
                             <span class="mr-3">
                                 ${answer === question.correct_answer ? '✓' : answer === userAnswer && !isCorrect ? '✗' : '○'}
                             </span>
-                            <span class="text-gray-700">${answer}</span>
+                            <span class="text-gray-700">${this.escapeHtml(answer)}</span>
                         </div>
                     `;
                 }).join('')}
@@ -583,13 +605,13 @@ class QuizGrader {
                 ${userAnswer ? `
                     <div>
                         <strong class="text-gray-700">Your answer:</strong> 
-                        <span class="${isCorrect ? 'text-green-600' : 'text-red-600'}">${userAnswer}</span>
+                        <span class="${isCorrect ? 'text-green-600' : 'text-red-600'}">${this.escapeHtml(userAnswer)}</span>
                     </div>
                 ` : '<div class="text-gray-500">No answer selected</div>'}
                 
                 <div>
                     <strong class="text-gray-700">Correct answer:</strong> 
-                    <span class="text-green-600">${question.correct_answer}</span>
+                    <span class="text-green-600">${this.escapeHtml(question.correct_answer)}</span>
                 </div>
                 
                 ${question.explanation ? `

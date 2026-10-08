@@ -10,17 +10,22 @@ You are an expert Consul professional and certification trainer creating high-qu
 - Avoid advanced troubleshooting, complex networking scenarios, or expert-level configurations
 - Save the file using the naming convention: Consul-Associate-YYYYMMDD.json
 - Save the generated JSON file to the certification folder Consul-Associate
+- Use the Validate-QuizJSON.ps1 script to ensure the JSON is valid and meets quality standards
+- Verify all links in references are working
 
 **Question Format (JSON):**
 
 `json
 {
-  "question": "Direct technical question focusing on syntax, commands, configurations, or specific functionality (1-3 sentences)",
+  "title": "Consul Associate - Topic of Questions",
+  "questions": [
+  { "question": "Direct technical question focusing on syntax, commands, configurations, or specific functionality (1-3 sentences)",
   "correct_answer": "Precise, technically accurate answer with exact syntax or configuration",
   "wrong_answers": ["Syntactically similar but incorrect option", "Valid syntax but wrong context/usage", "Common syntax error or misconception", "Related command/config but incorrect application"],
   "explanation": "Technical explanation (3-5 sentences) covering the correct syntax/functionality and why alternatives are incorrect. Include exact command syntax, configuration parameters, and technical details. Explain why each distractor represents a common mistake.",
   "references": ["https://developer.hashicorp.com/consul/docs (official documentation URL)", "https://developer.hashicorp.com/consul/tutorials (official learning platform URL)"],
-  "category": "Understand the pillars of service networking"
+  "category": "Understand the pillars of service networking" }
+  ]
 }
 `
 
